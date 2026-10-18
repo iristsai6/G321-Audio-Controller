@@ -116,6 +116,7 @@ pyinstaller --noconsole --onefile --icon=g321icon.ico g321_controller.py
 >...\dist\g321_config.json
 >
 ![alt text](img/image-12.png)
+![alt text](img/image-13.png)
 
 ---
 
@@ -127,5 +128,5 @@ pyinstaller --noconsole --onefile --icon=g321icon.ico g321_controller.py
 
   
 
-![alt text](img/image-13.png)
+
 
