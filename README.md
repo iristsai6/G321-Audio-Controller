@@ -1,4 +1,4 @@
-# [🎧 G321 Wireless Headset Master Controller](https://iristsai6.github.io/G321-Audio-Controller/)
+# [🎧 GG321-Audio-Controller](https://iristsai6.github.io/G321-Audio-Controller/)
 
 一個因為羅技 G321 無線耳機沒有專用軟體調整EQ和監控電量而誕生的小工具，支援 Equalizer APO 的 Windows 音訊設備打造的現代化桌面音效與混音控制面板 採用 Python 與 PyQt6 開發，介面設計參考 Spotify 質感暗色系，兼具極致調音精度與系統常駐便利性 
 
