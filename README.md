@@ -100,6 +100,12 @@ pyinstaller --noconsole --onefile --icon=g321icon.ico g321_controller.py
 ### 儲存設定
 ![alt text](img/image-7.png)
 
+### 儲存後的設定會以json的形式存在 g321_config.json
+>...\dist\g321_config.json
+>
+![alt text](img/image-12.png)
+<br>![alt text](img/image-13.png)
+
 ### 刪除模式
 ![alt text](img/image-8.png)
 
@@ -112,11 +118,7 @@ pyinstaller --noconsole --onefile --icon=g321icon.ico g321_controller.py
 ![alt text](img/image-10.png)
 <br>![alt text](img/image-11.png)
 
-### 儲存後的設定會以json的形式存在 g321_config.json
->...\dist\g321_config.json
->
-![alt text](img/image-12.png)
-<br>![alt text](img/image-13.png)
+
 
 ---
 
