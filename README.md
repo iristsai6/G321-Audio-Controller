@@ -68,7 +68,8 @@ pyinstaller --noconsole --onefile --icon=g321icon.ico g321_controller.py
 
 ### 5.開啟檔案
 
->開啟資料夾(G321-Audio-Controller > dist) 
+>開啟資料夾(G321-Audio-Controller > dist)
+>
 >![alt text](img/image-1.png)
 
 >找到 g321_controller 應用程式 (.exe) 
