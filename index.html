@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G321 Wireless Headset Master Controller - 專案展示與指南</title>
+    <title>G321-Audio-Controller - 專案展示與指南</title>
     <!-- Tailwind CSS v3 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -77,7 +77,7 @@
                 <a href="#installation" class="text-spotify-muted hover:text-spotify-green transition-colors">安裝與使用步驟</a>
             </div>
             <div>
-                <a href="https://github.com" target="_blank" class="bg-spotify-card hover:bg-spotify-hover text-white text-xs font-bold py-2.5 px-4 rounded-full border border-white/10 transition flex items-center gap-2">
+                <a href="https://github.com/iristsai6/G321-Audio-Controller" target="_blank" class="bg-spotify-card hover:bg-spotify-hover text-white text-xs font-bold py-2.5 px-4 rounded-full border border-white/10 transition flex items-center gap-2">
                     <i class="fa-brands fa-github text-base"></i> GitHub 專案
                 </a>
             </div>
@@ -93,14 +93,13 @@
             <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-tight">
                 購買前請詳閱說明書和網路評價 <br/>
                 <span class="bg-clip-text text-transparent bg-gradient-to-r from-spotify-green via-spotify-lightgreen to-white">
-                    G321 無線智慧控制器
+                    G321 0.1 dB 高精度等化控制器
                 </span>
             </h1>
             <p class="text-spotify-muted text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-                結合 Python PyQt6、Equalizer APO 底層驅動與 Windows Core Audio，為玩家與音響愛好者提供極致輕量、精準且流暢的情境切換體驗
-            </p>
-            <p class="text-spotify-muted text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-                提供 0.1 dB 級距 6 頻段專業等化器微調、智慧混音控制與動態模擬電量監控
+                結合 Python PyQt6、Equalizer APO 底層驅動與 Windows Core Audio
+                <br>為玩家與音響愛好者提供極致輕量、精準且流暢的情境切換體驗
+                <br>提供 0.1 dB 級距 6 頻段專業等化器微調、智慧混音控制與動態模擬電量監控
             </p>
             <div class="flex flex-wrap justify-center gap-4">
                 <a href="#demo" class="bg-spotify-green hover:bg-spotify-lightgreen text-black font-bold py-3 px-8 rounded-full shadow-lg shadow-spotify-green/30 transition transform hover:-translate-y-0.5">
@@ -117,8 +116,8 @@
 
         <section id="motivation" class="scroll-mt-24">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-3">🎯 開發動機 </h2>
-                <p class="text-spotify-muted max-w-2xl mx-auto">針對 Logitech G321 及同類型破爛無線耳機的使用痛點量身打造的最佳化解決方案</p>
+                <h2 class="text-3xl font-bold mb-3">🎯 開發動機 (Motivation)</h2>
+                <p class="text-spotify-muted max-w-2xl mx-auto">針對 Logitech G321 及同類型無線耳機的使用痛點量身打造的最佳化解決方案。</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="glass-panel p-8 rounded-2xl border border-white/5 hover:border-spotify-green/30 transition group">
@@ -384,11 +383,81 @@
                 <a href="#motivation" class="hover:text-white transition">專案動機</a>
                 <a href="#demo" class="hover:text-white transition">控制面板</a>
                 <a href="#installation" class="hover:text-white transition">安裝步驟</a>
+                <button onclick="openModal()" class="hover:text-spotify-green transition flex items-center gap-1 font-semibold focus:outline-none">
+                    <i class="fa-solid fa-scale-balanced"></i> 聲明與免責條款
+                </button>
+            </div>
+            <div>
+                <a href="https://github.com/iristsai6/G321-Audio-Controller" target="_blank" class="hover:text-white transition flex items-center gap-1">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
             </div>
         </div>
     </footer>
 
+    <!-- Disclaimer Modal -->
+    <div id="disclaimerModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4 transition-opacity duration-300">
+        <div class="glass-panel bg-spotify-base border border-white/10 rounded-3xl max-w-xl w-full p-6 sm:p-8 relative shadow-2xl space-y-6">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-scale-balanced text-spotify-green"></i> 聲明與免責條款 (Disclaimer & Credits)
+                </h3>
+                <button onclick="closeModal()" class="text-spotify-muted hover:text-white text-xl p-1 rounded-lg transition focus:outline-none">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-spotify-muted leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
+                <p>
+                    <b class="text-white block mb-1">第三方軟體依賴：</b>
+                    本專案（G321_Controller）為獨立開發之輔助控制工具，需配合開源音效軟體 <a href="https://sourceforge.net/projects/equalizerapo/" target="_blank" class="text-spotify-green hover:underline">Equalizer APO</a> 方可實現等化器微調功能。本專案與 Equalizer APO 官方無任何隸屬關係。
+                </p>
+                <p>
+                    <b class="text-white block mb-1">商標聲明：</b>
+                    文中所提及之「Logitech」、「LIGHTSPEED」、「G321」以及「Spotify」等品牌與產品名稱，其商標權歸原公司所有。本專案僅為個人開發之相容控制介面，無意侵權。
+                </p>
+                <p>
+                    <b class="text-white block mb-1">免責聲明：</b>
+                    本軟體按「現狀」提供，不提供任何明示或暗示的擔保。使用者須自行承擔因使用本軟體調整系統音訊或設定檔所可能產生的任何硬體或軟體風險。
+                </p>
+            </div>
+
+            <div class="border-t border-white/10 pt-4 flex justify-end">
+                <button onclick="closeModal()" class="bg-spotify-green hover:bg-spotify-lightgreen text-black font-bold text-xs py-2 px-6 rounded-full transition">
+                    已瞭解並關閉
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Modal Control Functions
+        function openModal() {
+            const modal = document.getElementById('disclaimerModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('disclaimerModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        // Close Modal when clicking outside content box
+        document.getElementById('disclaimerModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close Modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
         // Preset EQ profile values (values in dB float)
         const PROFILES = {
             "遊戲模式": { vol: 60, mic: 80, eq: [3.0, 1.0, -1.5, 0.0, 4.0, 2.0] },
