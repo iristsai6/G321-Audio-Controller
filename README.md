@@ -114,8 +114,18 @@ pyinstaller --noconsole --onefile --icon=g321icon.ico g321_controller.py
 
 ### 儲存後的設定會以json的形式存在 g321_config.json
 >...\dist\g321_config.json
-
+>
 ![alt text](img/image-12.png)
+
+---
+
+## ⚖️ 聲明與免責條款 (Disclaimer & Credits)
+
+- **第三方軟體依賴**：本專案（G321_Controller）為獨立開發之輔助控制工具，需配合開源音效軟體 **[Equalizer APO](https://sourceforge.net/projects/equalizerapo/)** 方可實現等化器微調功能。本專案與 Equalizer APO 官方無任何隸屬關係。
+- **商標聲明**：文中所提及之「Logitech」、「LIGHTSPEED」、「G321」以及「Spotify」等品牌與產品名稱，其商標權歸原公司所有。本專案僅為個人開發之相容控制介面，無意侵權。
+- **免責聲明**：本軟體按「現狀」提供，不提供任何明示或暗示的擔保。使用者須自行承擔因使用本軟體調整系統音訊或設定檔所可能產生的任何硬體或軟體風險。
+
+  
 
 ![alt text](img/image-13.png)
 
