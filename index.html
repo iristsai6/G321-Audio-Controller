@@ -67,18 +67,35 @@
                 </div>
                 <div>
                     <span class="font-bold text-lg tracking-wide block leading-none">G321 Master</span>
-                    <span class="text-xs text-spotify-muted">Audio Controller</span>
+                    <span class="text-xs text-spotify-muted" data-i18n="navSubtitle">Audio Controller</span>
                 </div>
             </div>
             <div class="hidden md:flex space-x-8 text-sm font-semibold">
-                <a href="#motivation" class="text-spotify-muted hover:text-spotify-green transition-colors">專案動機</a>
-                <a href="#demo" class="text-spotify-muted hover:text-spotify-green transition-colors">控制面板模擬</a>
-                <a href="#features" class="text-spotify-muted hover:text-spotify-green transition-colors">核心功能</a>
-                <a href="#installation" class="text-spotify-muted hover:text-spotify-green transition-colors">安裝與使用步驟</a>
+                <a href="#motivation" class="text-spotify-muted hover:text-spotify-green transition-colors" data-i18n="navMotivation">專案動機</a>
+                <a href="#demo" class="text-spotify-muted hover:text-spotify-green transition-colors" data-i18n="navDemo">控制面板模擬</a>
+                <a href="#features" class="text-spotify-muted hover:text-spotify-green transition-colors" data-i18n="navFeatures">核心功能</a>
+                <a href="#installation" class="text-spotify-muted hover:text-spotify-green transition-colors" data-i18n="navInstallation">安裝與使用步驟</a>
             </div>
-            <div>
+            <div class="flex items-center gap-3">
+                <!-- 🌏 語言切換按鈕與選單 -->
+                <div class="relative">
+                    <button onclick="toggleLangMenu()" class="bg-spotify-card hover:bg-spotify-hover text-white text-xs font-bold py-2.5 px-3.5 rounded-full border border-white/10 transition flex items-center gap-2 focus:outline-none">
+                        <span>🌏</span> <span id="currentLangLabel">繁體中文</span> <i class="fa-solid fa-chevron-down text-[10px] text-spotify-muted"></i>
+                    </button>
+                    <div id="langDropdown" class="absolute right-0 mt-2 w-40 glass-panel bg-spotify-base border border-white/10 rounded-2xl shadow-xl hidden py-2 z-50">
+                        <button onclick="changeLanguage('zh-Hant')" class="w-full text-left px-4 py-2 text-xs hover:bg-spotify-hover transition text-spotify-muted hover:text-white">繁體中文</button>
+                        <button onclick="changeLanguage('en')" class="w-full text-left px-4 py-2 text-xs hover:bg-spotify-hover transition text-spotify-muted hover:text-white">English (英文)</button>
+                        <button onclick="changeLanguage('ja')" class="w-full text-left px-4 py-2 text-xs hover:bg-spotify-hover transition text-spotify-muted hover:text-white">日本語 (日文)</button>
+                        <button onclick="changeLanguage('ko')" class="w-full text-left px-4 py-2 text-xs hover:bg-spotify-hover transition text-spotify-muted hover:text-white">한국어 (韓文)</button>
+                        <button onclick="changeLanguage('fr')" class="w-full text-left px-4 py-2 text-xs hover:bg-spotify-hover transition text-spotify-muted hover:text-white">Français (法文)</button>
+                        <button onclick="changeLanguage('es')" class="w-full text-left px-4 py-2 text-xs hover:bg-spotify-hover transition text-spotify-muted hover:text-white">Español (西班牙)</button>
+                        <button onclick="changeLanguage('it')" class="w-full text-left px-4 py-2 text-xs hover:bg-spotify-hover transition text-spotify-muted hover:text-white">Italiano (義大利)</button>
+                    </div>
+                </div>
+
+                <!-- GitHub 專案按鈕 -->
                 <a href="https://github.com/iristsai6/G321-Audio-Controller" target="_blank" class="bg-spotify-card hover:bg-spotify-hover text-white text-xs font-bold py-2.5 px-4 rounded-full border border-white/10 transition flex items-center gap-2">
-                    <i class="fa-brands fa-github text-base"></i> GitHub 專案
+                    <i class="fa-brands fa-github text-base"></i> GitHub
                 </a>
             </div>
         </div>
@@ -87,26 +104,26 @@
     <header class="relative py-20 px-6 text-center overflow-hidden border-b border-white/5">
         <div class="absolute inset-0 bg-gradient-to-b from-spotify-green/10 via-transparent to-transparent pointer-events-none"></div>
         <div class="max-w-4xl mx-auto relative z-10">
-            <span class="inline-block bg-spotify-green/10 text-spotify-green text-xs font-bold px-3 py-1 rounded-full border border-spotify-green/20 mb-4 uppercase tracking-wider">
+            <span class="inline-block bg-spotify-green/10 text-spotify-green text-xs font-bold px-3 py-1 rounded-full border border-spotify-green/20 mb-4 uppercase tracking-wider" data-i18n="badgeTitle">
                 Logitech G321 專屬輕量化控制中心
             </span>
             <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-tight">
-                購買前請詳閱說明書和網路評價 <br/>
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-spotify-green via-spotify-lightgreen to-white">
+                <span data-i18n="headerMain1">購買前請詳閱說明書和網路評價</span> <br/>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-spotify-green via-spotify-lightgreen to-white" data-i18n="headerMain2">
                     G321 0.1 dB 高精度等化控制器
                 </span>
             </h1>
-            <p class="text-spotify-muted text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+            <p class="text-spotify-muted text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed" data-i18n="headerDesc">
                 結合 Python PyQt6、Equalizer APO 底層驅動與 Windows Core Audio
                 <br>為玩家與音響愛好者提供極致輕量、精準且流暢的情境切換體驗
                 <br>提供 0.1 dB 級距 6 頻段專業等化器微調、智慧混音控制與動態模擬電量監控
             </p>
             <div class="flex flex-wrap justify-center gap-4">
                 <a href="#demo" class="bg-spotify-green hover:bg-spotify-lightgreen text-black font-bold py-3 px-8 rounded-full shadow-lg shadow-spotify-green/30 transition transform hover:-translate-y-0.5">
-                    <i class="fa-solid fa-sliders mr-2"></i> 體驗互動控制面板
+                    <i class="fa-solid fa-sliders mr-2"></i> <span data-i18n="btnDemo">體驗互動控制面板</span>
                 </a>
                 <a href="#installation" class="bg-spotify-card hover:bg-spotify-hover text-white font-bold py-3 px-8 rounded-full border border-white/10 transition">
-                    <i class="fa-solid fa-download mr-2"></i> 查看安裝指南
+                    <i class="fa-solid fa-download mr-2"></i> <span data-i18n="btnInstall">查看安裝指南</span>
                 </a>
             </div>
         </div>
@@ -116,35 +133,35 @@
 
         <section id="motivation" class="scroll-mt-24">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-3">🎯 開發動機 </h2>
-                <p class="text-spotify-muted max-w-2xl mx-auto">針對 Logitech G321 及同類型無線耳機的使用痛點量身打造的最佳化解決方案 </p>
+                <h2 class="text-3xl font-bold mb-3" data-i18n="motTitle">🎯 開發動機</h2>
+                <p class="text-spotify-muted max-w-2xl mx-auto" data-i18n="motSub">針對 Logitech G321 及同類型無線耳機的使用痛點量身打造的最佳化解決方案</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="glass-panel p-8 rounded-2xl border border-white/5 hover:border-spotify-green/30 transition group">
                     <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-weight-hanging"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">官方軟體笨重</h3>
-                    <p class="text-spotify-muted text-sm leading-relaxed">
-                        傳統官方驅動程式往往佔用大量系統記憶體與背景 CPU 資源，開機載入緩慢且功能過度繁雜 
+                    <h3 class="text-xl font-bold mb-3" data-i18n="card1Title">官方軟體笨重</h3>
+                    <p class="text-spotify-muted text-sm leading-relaxed" data-i18n="card1Desc">
+                        傳統官方驅動程式往往佔用大量系統記憶體與背景 CPU 資源，開機載入緩慢且功能過度繁雜
                     </p>
                 </div>
                 <div class="glass-panel p-8 rounded-2xl border border-white/5 hover:border-spotify-green/30 transition group">
                     <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-sliders"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">調音顆粒過粗</h3>
-                    <p class="text-spotify-muted text-sm leading-relaxed">
-                        一般預設等化器僅提供 1dB 或更粗糙的增益選項，無法針對遊戲腳步聲 (2.4kHz) 或重低音 (60Hz) 進行 0.1dB 級距的細緻等化 
+                    <h3 class="text-xl font-bold mb-3" data-i18n="card2Title">調音顆粒過粗</h3>
+                    <p class="text-spotify-muted text-sm leading-relaxed" data-i18n="card2Desc">
+                        一般預設等化器僅提供 1dB 或更粗糙的增益選項，無法針對遊戲腳步聲 (2.4kHz) 或重低音 (60Hz) 進行 0.1dB 級距的細緻等化
                     </p>
                 </div>
                 <div class="glass-panel p-8 rounded-2xl border border-white/5 hover:border-spotify-green/30 transition group">
                     <div class="w-12 h-12 rounded-xl bg-spotify-green/10 text-spotify-green flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-bolt"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">一鍵情境切換</h3>
-                    <p class="text-spotify-muted text-sm leading-relaxed">
-                        整合主音量、麥克風增益與 6 頻段 EQ 設定，只需透過系統列選單即可瞬間在遊戲、音樂、語音開會模式間轉換 
+                    <h3 class="text-xl font-bold mb-3" data-i18n="card3Title">一鍵情境切換</h3>
+                    <p class="text-spotify-muted text-sm leading-relaxed" data-i18n="card3Desc">
+                        整合主音量、麥克風增益與 6 頻段 EQ 設定，只需透過系統列選單即可瞬間在遊戲、音樂、語音開會模式間轉換
                     </p>
                 </div>
             </div>
@@ -152,54 +169,49 @@
 
         <section id="demo" class="scroll-mt-24">
             <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold mb-3">🎛️ 互動式控制面板模擬</h2>
-                <p class="text-spotify-muted max-w-2xl mx-auto">下方為控制面板與 EQ 數值模擬，試著切換預設模式或調整主音量與麥克風！</p>
+                <h2 class="text-3xl font-bold mb-3" data-i18n="demoTitle">🎛️ 互動式控制面板模擬</h2>
+                <p class="text-spotify-muted max-w-2xl mx-auto" data-i18n="demoSub">下方為控制面板與 EQ 數值模擬，試著切換預設模式或調整主音量與麥克風！</p>
             </div>
 
             <div class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect max-w-4xl mx-auto border border-white/10">
-                <!-- App Header Simulation -->
                 <div class="flex flex-wrap items-center justify-between gap-4 pb-6 mb-6 border-b border-white/10">
                     <div class="flex items-center gap-3">
                         <div class="w-3 h-3 rounded-full bg-spotify-green animate-pulse"></div>
-                        <span id="batteryStatus" class="font-bold text-sm text-spotify-green">🔋 模擬電量: 90% (已連線)</span>
+                        <span id="batteryStatus" class="font-bold text-sm text-spotify-green" data-i18n="batteryText">🔋 模擬電量: 90% (已連線)</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <label class="text-xs text-spotify-muted font-bold">預設模式：</label>
+                        <label class="text-xs text-spotify-muted font-bold" data-i18n="presetLabel">預設模式：</label>
                         <select id="modeSelect" class="bg-spotify-card border border-white/10 text-white text-xs rounded-lg px-3 py-1.5 focus:outline-none focus:border-spotify-green">
-                            <option value="遊戲模式">🎮 遊戲模式 (Gaming)</option>
-                            <option value="音樂模式">🎵 音樂模式 (Music)</option>
-                            <option value="追劇模式">🎬 追劇模式 (Movie)</option>
-                            <option value="語音會議">🎙️ 語音會議 (Meeting)</option>
+                            <option value="遊戲模式" data-i18n="mode1">🎮 遊戲模式 (Gaming)</option>
+                            <option value="音樂模式" data-i18n="mode2">🎵 音樂模式 (Music)</option>
+                            <option value="追劇模式" data-i18n="mode3">🎬 追劇模式 (Movie)</option>
+                            <option value="語音會議" data-i18n="mode4">🎙️ 語音會議 (Meeting)</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- Sliders Section -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Volume Controls -->
                     <div class="space-y-4">
-                        <h4 class="text-xs font-bold text-spotify-muted uppercase tracking-wider">音量與麥克風調節</h4>
+                        <h4 class="text-xs font-bold text-spotify-muted uppercase tracking-wider" data-i18n="volHeader">音量與麥克風調節</h4>
                         <div>
                             <div class="flex justify-between text-xs mb-1">
-                                <span>耳機主音量</span>
+                                <span data-i18n="headphoneVol">耳機主音量</span>
                                 <span id="volVal" class="text-spotify-green font-bold">60%</span>
                             </div>
                             <input type="range" id="volSlider" min="0" max="100" value="60" class="w-full accent-spotify-green bg-spotify-card rounded-lg h-1.5 cursor-pointer">
                         </div>
                         <div>
                             <div class="flex justify-between text-xs mb-1">
-                                <span>麥克風輸入音量</span>
+                                <span data-i18n="micVol">麥克風輸入音量</span>
                                 <span id="micVal" class="text-spotify-green font-bold">80%</span>
                             </div>
                             <input type="range" id="micSlider" min="0" max="100" value="80" class="w-full accent-spotify-green bg-spotify-card rounded-lg h-1.5 cursor-pointer">
                         </div>
                     </div>
 
-                    <!-- EQ Values Interactive Vertical Sliders (0.1 dB Step) -->
                     <div>
-                        <h4 class="text-xs font-bold text-spotify-muted uppercase tracking-wider mb-4">6 頻段等化器微調 (0.1 dB 級距)</h4>
+                        <h4 class="text-xs font-bold text-spotify-muted uppercase tracking-wider mb-4" data-i18n="eqHeader">6 頻段等化器微調 (0.1 dB 級距)</h4>
                         <div class="grid grid-cols-6 gap-2 bg-spotify-base p-4 rounded-2xl border border-white/5">
-                            <!-- 60Hz -->
                             <div class="flex flex-col items-center gap-2">
                                 <span id="eqVal0" class="text-[11px] font-bold text-spotify-green">+3.0 dB</span>
                                 <div class="h-32 flex items-center justify-center">
@@ -208,8 +220,6 @@
                                 </div>
                                 <span class="text-[10px] text-spotify-muted font-bold">60Hz</span>
                             </div>
-
-                            <!-- 150Hz -->
                             <div class="flex flex-col items-center gap-2">
                                 <span id="eqVal1" class="text-[11px] font-bold text-spotify-green">+1.0 dB</span>
                                 <div class="h-32 flex items-center justify-center">
@@ -218,8 +228,6 @@
                                 </div>
                                 <span class="text-[10px] text-spotify-muted font-bold">150Hz</span>
                             </div>
-
-                            <!-- 400Hz -->
                             <div class="flex flex-col items-center gap-2">
                                 <span id="eqVal2" class="text-[11px] font-bold text-spotify-green">-1.5 dB</span>
                                 <div class="h-32 flex items-center justify-center">
@@ -228,8 +236,6 @@
                                 </div>
                                 <span class="text-[10px] text-spotify-muted font-bold">400Hz</span>
                             </div>
-
-                            <!-- 1kHz -->
                             <div class="flex flex-col items-center gap-2">
                                 <span id="eqVal3" class="text-[11px] font-bold text-spotify-green">0.0 dB</span>
                                 <div class="h-32 flex items-center justify-center">
@@ -238,8 +244,6 @@
                                 </div>
                                 <span class="text-[10px] text-spotify-muted font-bold">1kHz</span>
                             </div>
-
-                            <!-- 2.4kHz -->
                             <div class="flex flex-col items-center gap-2">
                                 <span id="eqVal4" class="text-[11px] font-bold text-spotify-green">+4.0 dB</span>
                                 <div class="h-32 flex items-center justify-center">
@@ -248,8 +252,6 @@
                                 </div>
                                 <span class="text-[10px] text-spotify-muted font-bold">2.4kHz</span>
                             </div>
-
-                            <!-- 15kHz -->
                             <div class="flex flex-col items-center gap-2">
                                 <span id="eqVal5" class="text-[11px] font-bold text-spotify-green">+2.0 dB</span>
                                 <div class="h-32 flex items-center justify-center">
@@ -266,50 +268,50 @@
 
         <section id="features" class="scroll-mt-24">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-3">🚀 核心技術與功能亮點</h2>
-                <p class="text-spotify-muted max-w-2xl mx-auto">採用現代化 Python 架構，兼顧介面質感與效能表現 </p>
+                <h2 class="text-3xl font-bold mb-3" data-i18n="featTitle">🚀 核心技術與功能亮點</h2>
+                <p class="text-spotify-muted max-w-2xl mx-auto" data-i18n="featSub">採用現代化 Python 架構，兼顧介面質感與效能表現</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-spotify-card p-6 rounded-2xl border border-white/5 flex gap-4 items-start">
                     <div class="p-3 bg-spotify-green/10 text-spotify-green rounded-xl text-xl shrink-0"><i class="fa-solid fa-sliders"></i></div>
                     <div>
-                        <h3 class="font-bold text-base mb-1">0.1dB 精細微調</h3>
-                        <p class="text-spotify-muted text-xs leading-relaxed">直列式 Vertical Sliders，支援 60Hz 到 15kHz 共 6 個核心頻段微調 </p>
+                        <h3 class="font-bold text-base mb-1" data-i18n="f1Title">0.1dB 精細微調</h3>
+                        <p class="text-spotify-muted text-xs leading-relaxed" data-i18n="f1Desc">直列式 Vertical Sliders，支援 60Hz 到 15kHz 共 6 個核心頻段微調</p>
                     </div>
                 </div>
                 <div class="bg-spotify-card p-6 rounded-2xl border border-white/5 flex gap-4 items-start">
                     <div class="p-3 bg-spotify-green/10 text-spotify-green rounded-xl text-xl shrink-0"><i class="fa-solid fa-microphone"></i></div>
                     <div>
-                        <h3 class="font-bold text-base mb-1">麥克風獨立控制</h3>
-                        <p class="text-spotify-muted text-xs leading-relaxed">透過 Windows Core Audio API 即時調整錄音聲道音量與一鍵靜音切換 </p>
+                        <h3 class="font-bold text-base mb-1" data-i18n="f2Title">麥克風獨立控制</h3>
+                        <p class="text-spotify-muted text-xs leading-relaxed" data-i18n="f2Desc">透過 Windows Core Audio API 即時調整錄音聲道音量與一鍵靜音切換</p>
                     </div>
                 </div>
                 <div class="bg-spotify-card p-6 rounded-2xl border border-white/5 flex gap-4 items-start">
                     <div class="p-3 bg-spotify-green/10 text-spotify-green rounded-xl text-xl shrink-0"><i class="fa-solid fa-window-minimize"></i></div>
                     <div>
-                        <h3 class="font-bold text-base mb-1">系統列常駐 (Pystray)</h3>
-                        <p class="text-spotify-muted text-xs leading-relaxed">視窗可直接縮小至右下角工作列，右鍵一鍵切換預設模式不佔桌面 </p>
+                        <h3 class="font-bold text-base mb-1" data-i18n="f3Title">系統列常駐 (Pystray)</h3>
+                        <p class="text-spotify-muted text-xs leading-relaxed" data-i18n="f3Desc">視窗可直接縮小至右下角工作列，右鍵一鍵切換預設模式不佔桌面</p>
                     </div>
                 </div>
                 <div class="bg-spotify-card p-6 rounded-2xl border border-white/5 flex gap-4 items-start">
                     <div class="p-3 bg-spotify-green/10 text-spotify-green rounded-xl text-xl shrink-0"><i class="fa-solid fa-file-code"></i></div>
                     <div>
-                        <h3 class="font-bold text-base mb-1">Equalizer APO 寫入</h3>
-                        <p class="text-spotify-muted text-xs leading-relaxed">實時修改 `config.txt`，直接將增益參數套用到作業系統底層驅動 </p>
+                        <h3 class="font-bold text-base mb-1" data-i18n="f4Title">Equalizer APO 寫入</h3>
+                        <p class="text-spotify-muted text-xs leading-relaxed" data-i18n="f4Desc">實時修改 `config.txt`，直接將增益參數套用到作業系統底層驅動</p>
                     </div>
                 </div>
                 <div class="bg-spotify-card p-6 rounded-2xl border border-white/5 flex gap-4 items-start">
                     <div class="p-3 bg-spotify-green/10 text-spotify-green rounded-xl text-xl shrink-0"><i class="fa-solid fa-floppy-disk"></i></div>
                     <div>
-                        <h3 class="font-bold text-base mb-1">JSON 自動記憶</h3>
-                        <p class="text-spotify-muted text-xs leading-relaxed">自動儲存使用者於不同情境下的音量與 EQ 參數，開機自動讀取 </p>
+                        <h3 class="font-bold text-base mb-1" data-i18n="f5Title">JSON 自動記憶</h3>
+                        <p class="text-spotify-muted text-xs leading-relaxed" data-i18n="f5Desc">自動儲存使用者於不同情境下的音量與 EQ 參數，開機自動讀取</p>
                     </div>
                 </div>
                 <div class="bg-spotify-card p-6 rounded-2xl border border-white/5 flex gap-4 items-start">
                     <div class="p-3 bg-spotify-green/10 text-spotify-green rounded-xl text-xl shrink-0"><i class="fa-solid fa-palette"></i></div>
                     <div>
-                        <h3 class="font-bold text-base mb-1">Spotify 暗色系 GUI</h3>
-                        <p class="text-spotify-muted text-xs leading-relaxed">基於 PyQt6 刻劃的現代質感圓角與極簡風格，完美融合 Windows 11 </p>
+                        <h3 class="font-bold text-base mb-1" data-i18n="f6Title">Spotify 暗色系 GUI</h3>
+                        <p class="text-spotify-muted text-xs leading-relaxed" data-i18n="f6Desc">基於 PyQt6 刻劃的現代質感圓角與極簡風格，完美融合 Windows 11</p>
                     </div>
                 </div>
             </div>
@@ -317,53 +319,49 @@
 
         <section id="installation" class="scroll-mt-24">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-3">📌 快速安裝與建置指南</h2>
-                <p class="text-spotify-muted max-w-2xl mx-auto">只需簡單四個步驟，即可在您的電腦上啟動 G321 Controller </p>
+                <h2 class="text-3xl font-bold mb-3" data-i18n="instTitle">📌 快速安裝與建置指南</h2>
+                <p class="text-spotify-muted max-w-2xl mx-auto" data-i18n="instSub">只需簡單四個步驟，即可在您的電腦上啟動 G321 Controller</p>
             </div>
 
             <div class="space-y-6 max-w-4xl mx-auto">
-                <!-- Step 1 -->
                 <div class="glass-panel p-6 rounded-2xl border border-white/5 flex gap-6 items-start">
                     <div class="w-10 h-10 rounded-full bg-spotify-green/20 text-spotify-green font-black flex items-center justify-center shrink-0">1</div>
                     <div class="flex-grow">
-                        <h3 class="font-bold text-lg mb-2">安裝 Equalizer APO 底層驅動</h3>
-                        <p class="text-spotify-muted text-sm mb-3">請先下載並安裝 Equalizer APO 在安裝過程中的 Configurator 視窗，請務必勾選你的 Logitech G321 播放裝置，完成後<b>重新啟動電腦</b> </p>
+                        <h3 class="font-bold text-lg mb-2" data-i18n="step1Title">安裝 Equalizer APO 底層驅動</h3>
+                        <p class="text-spotify-muted text-sm mb-3" data-i18n="step1Desc">請先下載並安裝 Equalizer APO 在安裝過程中的 Configurator 視窗，請務必勾選你的 Logitech G321 播放裝置，完成後<b>重新啟動電腦</b></p>
                         <a href="https://sourceforge.net/projects/equalizerapo/" target="_blank" class="text-xs text-spotify-green hover:underline font-bold inline-flex items-center gap-1">
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i> 下載 Equalizer APO
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="step1Link">下載 Equalizer APO</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Step 2 -->
                 <div class="glass-panel p-6 rounded-2xl border border-white/5 flex gap-6 items-start">
                     <div class="w-10 h-10 rounded-full bg-spotify-green/20 text-spotify-green font-black flex items-center justify-center shrink-0">2</div>
                     <div class="flex-grow">
-                        <h3 class="font-bold text-lg mb-2">安裝 Python 依賴套件</h3>
-                        <p class="text-spotify-muted text-sm mb-3">開啟命令提示字元 (CMD) 或 PowerShell，執行以下指令安裝必要套件：</p>
+                        <h3 class="font-bold text-lg mb-2" data-i18n="step2Title">安裝 Python 依賴套件</h3>
+                        <p class="text-spotify-muted text-sm mb-3" data-i18n="step2Desc">開啟命令提示字元 (CMD) 或 PowerShell，執行以下指令安裝必要套件：</p>
                         <div class="bg-black/60 rounded-xl p-4 font-mono text-xs text-spotify-lightgreen border border-white/5 overflow-x-auto">
                             pip install PyQt6 pycaw pystray Pillow comtypes
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 3 -->
                 <div class="glass-panel p-6 rounded-2xl border border-white/5 flex gap-6 items-start">
                     <div class="w-10 h-10 rounded-full bg-spotify-green/20 text-spotify-green font-black flex items-center justify-center shrink-0">3</div>
                     <div class="flex-grow">
-                        <h3 class="font-bold text-lg mb-2">執行主程式</h3>
-                        <p class="text-spotify-muted text-sm mb-3">將專案檔案下載至本地資料夾後，直接執行主程式：</p>
+                        <h3 class="font-bold text-lg mb-2" data-i18n="step3Title">執行主程式</h3>
+                        <p class="text-spotify-muted text-sm mb-3" data-i18n="step3Desc">將專案檔案下載至本地資料夾後，直接執行主程式：</p>
                         <div class="bg-black/60 rounded-xl p-4 font-mono text-xs text-spotify-lightgreen border border-white/5 overflow-x-auto">
                             python g321_controller.py
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 4 -->
                 <div class="glass-panel p-6 rounded-2xl border border-white/5 flex gap-6 items-start">
                     <div class="w-10 h-10 rounded-full bg-spotify-green/20 text-spotify-green font-black flex items-center justify-center shrink-0">4</div>
                     <div class="flex-grow">
-                        <h3 class="font-bold text-lg mb-2">(可選) 使用 PyInstaller 打包為 .exe 執行檔</h3>
-                        <p class="text-spotify-muted text-sm mb-3">若希望打包為無命令視窗的獨立執行檔，請執行以下指令：</p>
+                        <h3 class="font-bold text-lg mb-2" data-i18n="step4Title">(可選) 使用 PyInstaller 打包為 .exe 執行檔</h3>
+                        <p class="text-spotify-muted text-sm mb-3" data-i18n="step4Desc">若希望打包為無命令視窗的獨立執行檔，請執行以下指令：</p>
                         <div class="bg-black/60 rounded-xl p-4 font-mono text-xs text-spotify-lightgreen border border-white/5 overflow-x-auto">
                             pyinstaller --noconsole --onefile --icon=g321icon.ico g321_controller.py
                         </div>
@@ -376,15 +374,15 @@
 
     <footer class="border-t border-white/5 py-8 text-center text-xs text-spotify-muted bg-black/40">
         <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div>
+            <div data-i18n="footerCopy">
                 &copy; 2026 G321-Audio-Controller. MIT Licensed.
             </div>
             <div class="flex space-x-6">
-                <a href="#motivation" class="hover:text-white transition">專案動機</a>
-                <a href="#demo" class="hover:text-white transition">控制面板</a>
-                <a href="#installation" class="hover:text-white transition">安裝步驟</a>
+                <a href="#motivation" class="hover:text-white transition" data-i18n="navMotivation">專案動機</a>
+                <a href="#demo" class="hover:text-white transition" data-i18n="navDemo">控制面板</a>
+                <a href="#installation" class="hover:text-white transition" data-i18n="navInstallation">安裝步驟</a>
                 <button onclick="openModal()" class="hover:text-spotify-green transition flex items-center gap-1 font-semibold focus:outline-none">
-                    <i class="fa-solid fa-scale-balanced"></i> 聲明與免責條款
+                    <i class="fa-solid fa-scale-balanced"></i> <span data-i18n="disclaimerBtn">聲明與免責條款</span>
                 </button>
             </div>
             <div>
@@ -400,7 +398,7 @@
         <div class="glass-panel bg-spotify-base border border-white/10 rounded-3xl max-w-xl w-full p-6 sm:p-8 relative shadow-2xl space-y-6">
             <div class="flex items-center justify-between border-b border-white/10 pb-4">
                 <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-scale-balanced text-spotify-green"></i> 聲明與免責條款 (Disclaimer & Credits)
+                    <i class="fa-solid fa-scale-balanced text-spotify-green"></i> <span data-i18n="modalTitle">聲明與免責條款 (Disclaimer & Credits)</span>
                 </h3>
                 <button onclick="closeModal()" class="text-spotify-muted hover:text-white text-xl p-1 rounded-lg transition focus:outline-none">
                     <i class="fa-solid fa-xmark"></i>
@@ -409,21 +407,21 @@
 
             <div class="space-y-4 text-xs sm:text-sm text-spotify-muted leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
                 <p>
-                    <b class="text-white block mb-1">第三方軟體依賴：</b>
-                    本專案（G321_Controller）為獨立開發之輔助控制工具，需配合開源音效軟體 <a href="https://sourceforge.net/projects/equalizerapo/" target="_blank" class="text-spotify-green hover:underline">Equalizer APO</a> 方可實現等化器微調功能 本專案與 Equalizer APO 官方無任何隸屬關係 
+                    <b class="text-white block mb-1" data-i18n="modalP1Title">第三方軟體依賴：</b>
+                    <span data-i18n="modalP1Text">本專案（G321_Controller）為獨立開發之輔助控制工具，需配合開源音效軟體</span> <a href="https://sourceforge.net/projects/equalizerapo/" target="_blank" class="text-spotify-green hover:underline">Equalizer APO</a> <span data-i18n="modalP1Text2">方可實現等化器微調功能 本專案與 Equalizer APO 官方無任何隸屬關係</span>
                 </p>
                 <p>
-                    <b class="text-white block mb-1">商標聲明：</b>
-                    文中所提及之「Logitech」、「LIGHTSPEED」、「G321」以及「Spotify」等品牌與產品名稱，其商標權歸原公司所有 本專案僅為個人開發之相容控制介面，無意侵權 
+                    <b class="text-white block mb-1" data-i18n="modalP2Title">商標聲明：</b>
+                    <span data-i18n="modalP2Text">文中所提及之「Logitech」、「LIGHTSPEED」、「G321」以及「Spotify」等品牌與產品名稱，其商標權歸原公司所有 本專案僅為個人開發之相容控制介面，無意侵權</span>
                 </p>
                 <p>
-                    <b class="text-white block mb-1">免責聲明：</b>
-                    本軟體按「現狀」提供，不提供任何明示或暗示的擔保 使用者須自行承擔因使用本軟體調整系統音訊或設定檔所可能產生的任何硬體或軟體風險 
+                    <b class="text-white block mb-1" data-i18n="modalP3Title">免責聲明：</b>
+                    <span data-i18n="modalP3Text">本軟體按「現狀」提供，不提供任何明示或暗示的擔保 使用者須自行承擔因使用本軟體調整系統音訊或設定檔所可能產生的任何硬體或軟體風險</span>
                 </p>
             </div>
 
             <div class="border-t border-white/10 pt-4 flex justify-end">
-                <button onclick="closeModal()" class="bg-spotify-green hover:bg-spotify-lightgreen text-black font-bold text-xs py-2 px-6 rounded-full transition">
+                <button onclick="closeModal()" class="bg-spotify-green hover:bg-spotify-lightgreen text-black font-bold text-xs py-2 px-6 rounded-full transition" data-i18n="modalClose">
                     已瞭解並關閉
                 </button>
             </div>
@@ -431,6 +429,535 @@
     </div>
 
     <script>
+        // 多國語言字典
+        const translations = {
+            'zh-Hant': {
+                navSubtitle: "Audio Controller",
+                navMotivation: "專案動機",
+                navDemo: "控制面板模擬",
+                navFeatures: "核心功能",
+                navInstallation: "安裝與使用步驟",
+                badgeTitle: "Logitech G321 專屬輕量化控制中心",
+                headerMain1: "購買前請詳閱說明書和網路評價",
+                headerMain2: "G321 0.1 dB 高精度等化控制器",
+                headerDesc: "結合 Python PyQt6、Equalizer APO 底層驅動與 Windows Core Audio<br>為玩家與音響愛好者提供極致輕量、精準且流暢的情境切換體驗<br>提供 0.1 dB 級距 6 頻段專業等化器微調、智慧混音控制與動態模擬電量監控",
+                btnDemo: "體驗互動控制面板",
+                btnInstall: "查看安裝指南",
+                motTitle: "🎯 開發動機",
+                motSub: "針對 Logitech G321 及同類型無線耳機的使用痛點量身打造的最佳化解決方案",
+                card1Title: "官方軟體笨重",
+                card1Desc: "傳統官方驅動程式往往佔用大量系統記憶體與背景 CPU 資源，開機載入緩慢且功能過度繁雜",
+                card2Title: "調音顆粒過粗",
+                card2Desc: "一般預設等化器僅提供 1dB 或更粗糙的增益選項，無法針對遊戲腳步聲 (2.4kHz) 或重低音 (60Hz) 進行 0.1dB 級距的細緻等化",
+                card3Title: "一鍵情境切換",
+                card3Desc: "整合主音量、麥克風增益與 6 頻段 EQ 設定，只需透過系統列選單即可瞬間在遊戲、音樂、語音開會模式間轉換",
+                demoTitle: "🎛️ 互動式控制面板模擬",
+                demoSub: "下方為控制面板與 EQ 數值模擬，試著切換預設模式或調整主音量與麥克風！",
+                batteryText: "🔋 模擬電量: 90% (已連線)",
+                presetLabel: "預設模式：",
+                mode1: "🎮 遊戲模式 (Gaming)",
+                mode2: "🎵 音樂模式 (Music)",
+                mode3: "🎬 追劇模式 (Movie)",
+                mode4: "🎙️ 語音會議 (Meeting)",
+                volHeader: "音量與麥克風調節",
+                headphoneVol: "耳機主音量",
+                micVol: "麥克風輸入音量",
+                eqHeader: "6 頻段等化器微調 (0.1 dB 級距)",
+                featTitle: "🚀 核心技術與功能亮點",
+                featSub: "採用現代化 Python 架構，兼顧介面質感與效能表現",
+                f1Title: "0.1dB 精細微調",
+                f1Desc: "直列式 Vertical Sliders，支援 60Hz 到 15kHz 共 6 個核心頻段微調",
+                f2Title: "麥克風獨立控制",
+                f2Desc: "透過 Windows Core Audio API 即時調整錄音聲道音量與一鍵靜音切換",
+                f3Title: "系統列常駐 (Pystray)",
+                f3Desc: "視窗可直接縮小至右下角工作列，右鍵一鍵切換預設模式不佔桌面",
+                f4Title: "Equalizer APO 寫入",
+                f4Desc: "實時修改 `config.txt`，直接將增益參數套用到作業系統底層驅動",
+                f5Title: "JSON 自動記憶",
+                f5Desc: "自動儲存使用者於不同情境下的音量與 EQ 參數，開機自動讀取",
+                f6Title: "Spotify 暗色系 GUI",
+                f6Desc: "基於 PyQt6 刻劃的現代質感圓角與極簡風格，完美融合 Windows 11",
+                instTitle: "📌 快速安裝與建置指南",
+                instSub: "只需簡單四個步驟，即可在您的電腦上啟動 G321 Controller",
+                step1Title: "安裝 Equalizer APO 底層驅動",
+                step1Desc: "請先下載並安裝 Equalizer APO 在安裝過程中的 Configurator 視窗，請務必勾選你的 Logitech G321 播放裝置，完成後<b>重新啟動電腦</b>",
+                step1Link: "下載 Equalizer APO",
+                step2Title: "安裝 Python 依賴套件",
+                step2Desc: "開啟命令提示字元 (CMD) 或 PowerShell，執行以下指令安裝必要套件：",
+                step3Title: "執行主程式",
+                step3Desc: "將專案檔案下載至本地資料夾後，直接執行主程式：",
+                step4Title: "(可選) 使用 PyInstaller 打包為 .exe 執行檔",
+                step4Desc: "若希望打包為無命令視窗的獨立執行檔，請執行以下指令：",
+                footerCopy: "&copy; 2026 G321-Audio-Controller. MIT Licensed.",
+                disclaimerBtn: "聲明與免責條款",
+                modalTitle: "聲明與免責條款 (Disclaimer & Credits)",
+                modalP1Title: "第三方軟體依賴：",
+                modalP1Text: "本專案（G321_Controller）為獨立開發之輔助控制工具，需配合開源音效軟體",
+                modalP1Text2: "方可實現等化器微調功能 本專案與 Equalizer APO 官方無任何隸屬關係",
+                modalP2Title: "商標聲明：",
+                modalP2Text: "文中所提及之「Logitech」、「LIGHTSPEED」、「G321」以及「Spotify」等品牌與產品名稱，其商標權歸原公司所有 本專案僅為個人開發之相容控制介面，無意侵權",
+                modalP3Title: "免責聲明：",
+                modalP3Text: "本軟體按「現狀」提供，不提供任何明示或暗示的擔保 使用者須自行承擔因使用本軟體調整系統音訊或設定檔所可能產生的任何硬體或軟體風險",
+                modalClose: "已瞭解並關閉"
+            },
+            'en': {
+                navSubtitle: "Audio Controller",
+                navMotivation: "Motivation",
+                navDemo: "Dashboard Demo",
+                navFeatures: "Features",
+                navInstallation: "Installation",
+                badgeTitle: "Logitech G321 Lightweight Control Center",
+                headerMain1: "Please read manual and reviews before purchasing",
+                headerMain2: "G321 0.1 dB High-Precision EQ Controller",
+                headerDesc: "Powered by Python PyQt6, Equalizer APO, and Windows Core Audio.<br>Delivering lightweight, precise, and smooth mode switching for gamers and audiophiles.<br>Featuring 0.1 dB step 6-band professional EQ, smart mixer control, and battery monitoring.",
+                btnDemo: "Try Interactive Dashboard",
+                btnInstall: "View Installation Guide",
+                motTitle: "🎯 Project Motivation",
+                motSub: "An optimized solution tailored for Logitech G321 and similar wireless headsets.",
+                card1Title: "Official Software is Bloated",
+                card1Desc: "Traditional official drivers consume massive system memory and background CPU resources, loading slowly with excessive useless features.",
+                card2Title: "Coarse Tuning Granularity",
+                card2Desc: "Default EQs only offer 1dB adjustments, failing to finely tune footstep cues (2.4kHz) or sub-bass (60Hz) at 0.1dB intervals.",
+                card3Title: "One-Click Mode Switching",
+                card3Desc: "Integrates main volume, mic gain, and 6-band EQ settings to instantly switch between gaming, music, and meeting modes from the system tray.",
+                demoTitle: "🎛️ Interactive Control Panel Simulation",
+                demoSub: "Try switching preset modes or adjusting the volume and microphone below!",
+                batteryText: "🔋 Battery: 90% (Connected)",
+                presetLabel: "Preset Mode:",
+                mode1: "🎮 Gaming Mode",
+                mode2: "🎵 Music Mode",
+                mode3: "🎬 Movie Mode",
+                mode4: "🎙️ Meeting Mode",
+                volHeader: "Volume & Microphone Control",
+                headphoneVol: "Headphone Volume",
+                micVol: "Microphone Input Volume",
+                eqHeader: "6-Band Equalizer (0.1 dB Steps)",
+                featTitle: "🚀 Core Technology & Highlights",
+                featSub: "Built with modern Python architecture for UI aesthetics and performance.",
+                f1Title: "0.1dB Fine Tuning",
+                f1Desc: "Vertical sliders supporting 6 core frequency bands from 60Hz to 15kHz.",
+                f2Title: "Independent Mic Control",
+                f2Desc: "Real-time recording channel adjustment and one-click mute via Windows Core Audio API.",
+                f3Title: "System Tray Resident (Pystray)",
+                f3Desc: "Minimize to the system tray; right-click to instantly switch modes without cluttering the desktop.",
+                f4Title: "Equalizer APO Integration",
+                f4Desc: "Real-time modification of `config.txt` to apply gain parameters directly to the OS audio driver.",
+                f5Title: "JSON Auto-Save",
+                f5Desc: "Automatically saves volume and EQ profiles across different scenarios and restores on startup.",
+                f6Title: "Spotify Dark GUI",
+                f6Desc: "Modern rounded corners and minimalist style built with PyQt6, perfectly blending with Windows 11.",
+                instTitle: "📌 Quick Installation & Setup Guide",
+                instSub: "Launch G321 Controller on your PC in just four simple steps.",
+                step1Title: "Install Equalizer APO Driver",
+                step1Desc: "Download and install Equalizer APO. In the Configurator window, make sure to select your Logitech G321 playback device, then <b>restart your computer</b>.",
+                step1Link: "Download Equalizer APO",
+                step2Title: "Install Python Dependencies",
+                step2Desc: "Open Command Prompt (CMD) or PowerShell and run the following command:",
+                step3Title: "Run Main Program",
+                step3Desc: "After downloading project files to your local folder, execute:",
+                step4Title: "(Optional) Package into .exe with PyInstaller",
+                step4Desc: "To package into a standalone executable without a command window, run:",
+                footerCopy: "&copy; 2026 G321-Audio-Controller. MIT Licensed.",
+                disclaimerBtn: "Disclaimer & Credits",
+                modalTitle: "Disclaimer & Credits",
+                modalP1Title: "Third-Party Software Dependency:",
+                modalP1Text: "This project (G321_Controller) is an independently developed auxiliary control tool and requires the open-source audio software",
+                modalP1Text2: "to enable equalizer fine-tuning. This project has no affiliation with Equalizer APO.",
+                modalP2Title: "Trademark Notice:",
+                modalP2Text: "Trademarks such as 'Logitech', 'LIGHTSPEED', 'G321', and 'Spotify' belong to their respective owners. This project is a personal compatible control interface with no intent of infringement.",
+                modalP3Title: "Disclaimer:",
+                modalP3Text: "This software is provided 'as is', without warranty of any kind. Users assume all risks regarding hardware or software issues arising from adjusting system audio or configuration files.",
+                modalClose: "Got it & Close"
+            },
+            'ja': {
+                navSubtitle: "Audio Controller",
+                navMotivation: "開発動機",
+                navDemo: "コントロールパネル",
+                navFeatures: "主要機能",
+                navInstallation: "インストール",
+                badgeTitle: "Logitech G321 専用軽量コントロールセンター",
+                headerMain1: "ご購入前に説明書とレビューをご確認ください",
+                headerMain2: "G321 0.1 dB 高精度イコライザーコントローラー",
+                headerDesc: "Python PyQt6、Equalizer APO、Windows Core Audioを統合。<br>ゲーマーやオーディオ愛好家向けに、軽量で正確かつスムーズな切り替えを提供。<br>0.1dB刻みの6バンドプロ用EQ、スマートミキサー、バッテリー残量監視を搭載。",
+                btnDemo: "インタラクティブデモを試す",
+                btnInstall: "インストールガイドを見る",
+                motTitle: "🎯 開発動機",
+                motSub: "Logitech G321および同等のワイヤレスヘッドセットの痛点を解決するために設計。",
+                card1Title: "公式ソフトが重い",
+                card1Desc: "従来の公式ドライバはメモリとCPUを大量消費し、起動が遅く機能も過剰です。",
+                card2Title: "調整幅が粗い",
+                card2Desc: "デフォルトのEQは1dB刻みであり、足音(2.4kHz)や低音(60Hz)を0.1dB単位で微調整できません。",
+                card3Title: "ワンクリック切り替え",
+                card3Desc: "音量、マイクゲイン、6バンドEQを統合し、タスクトレイから一瞬でゲーム・音楽・会議モードへ切替。",
+                demoTitle: "🎛️ インタラクティブコントロールパネル模擬",
+                demoSub: "プリセットモードの切替や音量・マイクのスライダーを試してみてください！",
+                batteryText: "🔋 バッテリー: 90% (接続済み)",
+                presetLabel: "プリセット:",
+                mode1: "🎮 ゲームモード",
+                mode2: "🎵 音楽モード",
+                mode3: "🎬 映画モード",
+                mode4: "🎙️ 会議モード",
+                volHeader: "音量・マイク調節",
+                headphoneVol: "ヘッドホン音量",
+                micVol: "マイク入力音量",
+                eqHeader: "6バンドイコライザー微調整 (0.1 dB刻み)",
+                featTitle: "🚀 コア技術と機能のハイライト",
+                featSub: "モダンなPythonアーキテクチャにより、美しさとパフォーマンスを両立。",
+                f1Title: "0.1dB精密微調整",
+                f1Desc: "60Hz〜15kHzの6つの主要周波数帯域を垂直スライダーで微調整。",
+                f2Title: "マイク独立制御",
+                f2Desc: "Windows Core Audio APIにより、リアルタイムでの音量調整とミュート切替。",
+                f3Title: "常駐型タスクトレイ (Pystray)",
+                f3Desc: "ウィンドウをタスクトレイに格納可能。右クリックで素早くモード切替。",
+                f4Title: "Equalizer APO 連携",
+                f4Desc: "config.txtをリアルタイム編集し、OSオーディオドライバにゲインを適用。",
+                f5Title: "JSON自動保存",
+                f5Desc: "シーンごとの音量とEQパラメータを自動保存し、起動時に復元。",
+                f6Title: "Spotifyダーク系GUI",
+                f6Desc: "PyQt6によるモダンなラウンドデザインで、Windows 11に完璧に調和。",
+                instTitle: "📌 クイックインストールガイド",
+                instSub: "4つの簡単なステップでG321 ControllerをPC上で起動できます。",
+                step1Title: "Equalizer APO ドライバのインストール",
+                step1Desc: "Equalizer APOをダウンロードしてインストールします。Configurator画面でLogitech G321再生デバイスにチェックを入れ、完了後に<b>パソコンを再起動</b>してください。",
+                step1Link: "Equalizer APOをダウンロード",
+                step2Title: "Python依存パッケージのインストール",
+                step2Desc: "コマンドプロンプト(CMD)またはPowerShellを開き、次のコマンドを実行します：",
+                step3Title: "メインプログラムの実行",
+                step3Desc: "プロジェクトファイルをローカルにダウンロードした後、実行します：",
+                step4Title: "(オプション) PyInstallerで .exe 化",
+                step4Desc: "コマンドウィンドウなしの独立した実行ファイルとしてビルドするには：",
+                footerCopy: "&copy; 2026 G321-Audio-Controller. MIT Licensed.",
+                disclaimerBtn: "免責事項",
+                modalTitle: "免責事項とクレジット (Disclaimer & Credits)",
+                modalP1Title: "サードパーティ製ソフトウェアの依存：",
+                modalP1Text: "本プロジェクト（G321_Controller）は独立開発された補助ツールであり、イコライザー微調整機能を実現するためにオープンソースの音響ソフト",
+                modalP1Text2: "を使用します。本プロジェクトはEqualizer APO公式とは一切関係ありません。",
+                modalP2Title: "商標について：",
+                modalP2Text: "「Logitech」「LIGHTSPEED」「G321」「Spotify」等の商標は各社の所有物です。本プロジェクトは個人開発の互換インターフェースであり、権利侵害の意図はありません。",
+                modalP3Title: "免責事項：",
+                modalP3Text: "本ソフトウェアは「現状のまま」提供され、いかなる保証も行われません。オーディオ設定の変更に起因するハードウェアまたはソフトウェアの損害は、ユーザー自身の責任となります。",
+                modalClose: "理解して閉じる"
+            },
+            'ko': {
+                navSubtitle: "Audio Controller",
+                navMotivation: "프로젝트 동기",
+                navDemo: "제어판 시뮬레이션",
+                navFeatures: "핵심 기능",
+                navInstallation: "설치 가이드",
+                badgeTitle: "Logitech G321 전용 경량화 제어 센터",
+                headerMain1: "구매 전 설명서와 온라인 리뷰를 확인하세요",
+                headerMain2: "G321 0.1 dB 고정밀 이퀄라이저 컨트롤러",
+                headerDesc: "Python PyQt6, Equalizer APO, Windows Core Audio 결합<br>게이머와 오디오 애호가를 위한 극도로 가볍고 정밀한 모드 전환 경험<br>0.1 dB 단위 6밴드 전문 이퀄라이저 미세 조정 및 배터리 모니터링 제공",
+                btnDemo: "인터랙티브 제어판 체험",
+                btnInstall: "설치 가이드 보기",
+                motTitle: "🎯 개발 동기",
+                motSub: "Logitech G321 및 유사 무선 헤드셋 사용자의 불편함을 해결하기 위해 최적화된 솔루션",
+                card1Title: "공식 소프트웨어의 무거움",
+                card1Desc: "기존 공식 드라이버는 많은 시스템 메모리와 백그라운드 CPU 자원을 소모하며 로딩이 느리고 기능이 복잡합니다.",
+                card2Title: "조절 단위의 한계",
+                card2Desc: "기본 이퀄라이저는 1dB 단위로만 제공되어 게임 발소리(2.4kHz)나 저음(60Hz)을 0.1dB 단위로 세밀하게 조절할 수 없습니다.",
+                card3Title: "원클릭 모드 전환",
+                card3Desc: "주 음향, 마이크 게인, 6밴드 EQ 설정을 통합하여 시스템 트레이에서 게임, 음악, 회의 모드 간을 즉시 전환합니다.",
+                demoTitle: "🎛️ 인터랙티브 제어판 시뮬레이션",
+                demoSub: "아래에서 프리셋 모드를 전환하거나 볼륨 및 마이크를 조절해 보세요!",
+                batteryText: "🔋 배터리: 90% (연결됨)",
+                presetLabel: "프리셋 모드:",
+                mode1: "🎮 게임 모드",
+                mode2: "🎵 음악 모드",
+                mode3: "🎬 영상 모드",
+                mode4: "🎙️ 회의 모드",
+                volHeader: "볼륨 및 마이크 조절",
+                headphoneVol: "헤드폰 주 볼륨",
+                micVol: "마이크 입력 볼륨",
+                eqHeader: "6밴드 이퀄라이저 미세 조정 (0.1 dB 단위)",
+                featTitle: "🚀 핵심 기술 및 기능 하이라이트",
+                featSub: "현대적인 Python 아키텍처로 UI 감성과 성능을 모두 만족시킵니다.",
+                f1Title: "0.1dB 정밀 미세 조정",
+                f1Desc: "60Hz부터 15kHz까지 6개의 핵심 주파수 대역을 수직 슬라이더로 조절",
+                f2Title: "마이크 독립 제어",
+                f2Desc: "Windows Core Audio API를 통해 녹음 채널 볼륨 실시간 조절 및 원클릭 음소거",
+                f3Title: "시스템 트레이 상주 (Pystray)",
+                f3Desc: "창을 우측 하단 트레이로 최소화하고 우클릭으로 모드 즉시 전환",
+                f4Title: "Equalizer APO 연동",
+                f4Desc: "`config.txt`를 실시간 수정하여 OS 오디오 드라이버에 게인 파라미터 직접 적용",
+                f5Title: "JSON 자동 저장",
+                f5Desc: "상황별 볼륨 및 EQ 파라미터를 자동 저장하고 부팅 시 자동 로드",
+                f6Title: "Spotify 다크 테마 GUI",
+                f6Desc: "PyQt6 기반의 모던한 둥근 모서리와 미니멀 스타일로 Windows 11과 완벽 조화",
+                instTitle: "📌 빠른 설치 및 빌드 가이드",
+                instSub: "간단한 4단계로 PC에서 G321 Controller를 실행하세요.",
+                step1Title: "Equalizer APO 드라이버 설치",
+                step1Desc: "Equalizer APO를 다운로드하여 설치합니다. Configurator 창에서 Logitech G321 재생 장치를 반드시 체크하고 완료 후 <b>컴퓨터를 재부팅</b>하세요.",
+                step1Link: "Equalizer APO 다운로드",
+                step2Title: "Python 종속성 패키지 설치",
+                step2Desc: "명령 프롬프트(CMD) 또는 PowerShell을 열고 다음 명령어를 실행하세요:",
+                step3Title: "메인 프로그램 실행",
+                step3Desc: "프로젝트 파일을 로컬 폴더에 다운로드한 후 실행하세요:",
+                step4Title: "(선택) PyInstaller로 .exe 패키징",
+                step4Desc: "명령 창 없는 독립 실행형 파일로 패키징하려면 다음을 실행하세요:",
+                footerCopy: "&copy; 2026 G321-Audio-Controller. MIT Licensed.",
+                disclaimerBtn: "면책 조항",
+                modalTitle: "면책 조항 및 크레딧 (Disclaimer & Credits)",
+                modalP1Title: "타사 소프트웨어 종속성:",
+                modalP1Text: "본 프로젝트(G321_Controller)는 독립적으로 개발된 보조 제어 도구이며, 이퀄라이저 미세 조정 기능을 구현하기 위해 오픈소스 오디오 소프트웨어",
+                modalP1Text2: "와 연동됩니다. 본 프로젝트는 Equalizer APO 공식과 아무런 관련이 없습니다.",
+                modalP2Title: "상표 고지:",
+                modalP2Text: "언급된 'Logitech', 'LIGHTSPEED', 'G321', 'Spotify' 등의 브랜드 및 제품명은 각 회사의 소유입니다. 본 프로젝트는 개인 개발 호환 인터페이스이며 침해 의도가 없습니다.",
+                modalP3Title: "면책 조항:",
+                modalP3Text: "본 소프트웨어는 '있는 그대로' 제공되며 어떠한 명시적 또는 묵시적 보증도 하지 않습니다. 시스템 오디오 또는 설정 파일 조정으로 인해 발생하는 하드웨어/소프트웨어 위험은 사용자 본인이 부담합니다.",
+                modalClose: "확인 및 닫기"
+            },
+            'fr': {
+                navSubtitle: "Audio Controller",
+                navMotivation: "Motivation",
+                navDemo: "Démo",
+                navFeatures: "Fonctionnalités",
+                navInstallation: "Installation",
+                badgeTitle: "Centre de contrôle léger pour Logitech G321",
+                headerMain1: "Veuillez lire le manuel et les avis avant d'acheter",
+                headerMain2: "Contrôleur EQ de haute précision G321 0.1 dB",
+                headerDesc: "Combinant Python PyQt6, Equalizer APO et Windows Core Audio.<br>Offre aux joueurs et audiophiles une commutation de mode fluide, légère et précise.<br>Égaliseur pro à 6 bandes (pas de 0.1 dB), mixeur intelligent et suivi de batterie.",
+                btnDemo: "Essayer le tableau de bord",
+                btnInstall: "Guide d'installation",
+                motTitle: "🎯 Motivation du projet",
+                motSub: "Une solution optimisée pour les casques sans fil Logitech G321 et similaires.",
+                card1Title: "Logiciel officiel lourd",
+                card1Desc: "Les pilotes officiels consomment beaucoup de mémoire et de CPU, se chargent lentement et ont trop de fonctions superflues.",
+                card2Title: "Réglage trop grossier",
+                card2Desc: "Les égaliseurs par défaut offrent des paliers de 1dB, empêchant d'ajuster finement les bruits de pas (2.4kHz) ou les basses (60Hz).",
+                card3Title: "Basculement en un clic",
+                card3Desc: "Intègre le volume, le micro et l'égaliseur pour passer instantanément du mode jeu à musique ou réunion depuis la barre des tâches.",
+                demoTitle: "🎛️ Simulation interactive du panneau de contrôle",
+                demoSub: "Essayez de changer les modes prédéfinis ou d'ajuster le volume ci-dessous !",
+                batteryText: "🔋 Batterie : 90% (Connecté)",
+                presetLabel: "Mode prédéfini :",
+                mode1: "🎮 Mode Jeu",
+                mode2: "🎵 Mode Musique",
+                mode3: "🎬 Mode Film",
+                mode4: "🎙️ Mode Réunion",
+                volHeader: "Contrôle du volume et du micro",
+                headphoneVol: "Volume principal",
+                micVol: "Volume du micro",
+                eqHeader: "Égaliseur 6 bandes (paliers de 0.1 dB)",
+                featTitle: "🚀 Technologies et points forts",
+                featSub: "Architecture Python moderne pour une esthétique et des performances optimales.",
+                f1Title: "Réglage fin 0.1dB",
+                f1Desc: "Curseurs verticaux pour 6 bandes de fréquence de 60Hz à 15kHz.",
+                f2Title: "Contrôle micro indépendant",
+                f2Desc: "Ajustement en temps réel via l'API Windows Core Audio et sourdine en un clic.",
+                f3Title: "Résident en barre des tâches",
+                f3Desc: "Réduction dans la barre système ; clic droit pour changer de mode rapidement.",
+                f4Title: "Intégration Equalizer APO",
+                f4Desc: "Modification en temps réel de `config.txt` pour appliquer les gains au pilote audio.",
+                f5Title: "Sauvegarde JSON auto",
+                f5Desc: "Enregistre automatiquement les profils de volume et d'égalisation.",
+                f6Title: "Interface sombre style Spotify",
+                f6Desc: "Design moderne avec coins arrondis PyQt6, parfaitement intégré à Windows 11.",
+                instTitle: "📌 Guide d'installation rapide",
+                instSub: "Lancez le contrôleur G321 sur votre PC en quatre étapes simples.",
+                step1Title: "Installer le pilote Equalizer APO",
+                step1Desc: "Téléchargez et installez Equalizer APO. Dans la fenêtre Configurator, sélectionnez votre appareil Logitech G321, puis <b>redémarrez votre ordinateur</b>.",
+                step1Link: "Télécharger Equalizer APO",
+                step2Title: "Installer les dépendances Python",
+                step2Desc: "Ouvrez leinvite de commandes (CMD) ou PowerShell et exécutez :",
+                step3Title: "Exécuter le programme principal",
+                step3Desc: "Après avoir téléchargé les fichiers, exécutez :",
+                step4Title: "(Optionnel) Créer un exécutable .exe",
+                step4Desc: "Pour empaqueter sans fenêtre de commande, exécutez :",
+                footerCopy: "&copy; 2026 G321-Audio-Controller. Sous licence MIT.",
+                disclaimerBtn: "Avis et clauses de non-responsabilité",
+                modalTitle: "Avis et clauses de non-responsabilité (Disclaimer)",
+                modalP1Title: "Dépendance logicielle tiers :",
+                modalP1Text: "Ce projet (G321_Controller) est un outil de contrôle auxiliaire et nécessite le logiciel audio open-source",
+                modalP1Text2: "pour l'égalisation. Ce projet n'est pas affilié à Equalizer APO.",
+                modalP2Title: "Avis sur les marques :",
+                modalP2Text: "Les marques 'Logitech', 'LIGHTSPEED', 'G321' et 'Spotify' appartiennent à leurs propriétaires respectifs. Ce projet est une interface compatible personnelle.",
+                modalP3Title: "Non-responsabilité :",
+                modalP3Text: "Ce logiciel est fourni 'tel quel', sans garantie. Les utilisateurs assument tous les risques liés aux modifications matérielles ou logicielles.",
+                modalClose: "Compris et fermer"
+            },
+            'es': {
+                navSubtitle: "Audio Controller",
+                navMotivation: "Motivación",
+                navDemo: "Demostración",
+                navFeatures: "Características",
+                navInstallation: "Instalación",
+                badgeTitle: "Centro de control ligero para Logitech G321",
+                headerMain1: "Lea el manual y las reseñas antes de comprar",
+                headerMain2: "Controlador EQ de alta precisión G321 0.1 dB",
+                headerDesc: "Combinando Python PyQt6, Equalizer APO y Windows Core Audio.<br>Brinda a jugadores y audiófilos un cambio de modo ligero, preciso y fluido.<br>Ecualizador profesional de 6 bandas (pasos de 0.1 dB), mezclador y batería.",
+                btnDemo: "Probar panel interactivo",
+                btnInstall: "Ver guía de instalación",
+                motTitle: "🎯 Motivación del proyecto",
+                motSub: "Una solución optimizada para los auriculares inalámbricos Logitech G321 y similares.",
+                card1Title: "Software oficial pesado",
+                card1Desc: "Los controladores oficiales consumen demasiada memoria y CPU, cargan lento y tienen funciones excesivas.",
+                card2Title: "Granularidad gruesa",
+                card2Desc: "Los ecualizadores predeterminados solo ofrecen 1dB, sin poder afinar pasos (2.4kHz) o graves (60Hz) en pasos de 0.1dB.",
+                card3Title: "Cambio de modo en 1 clic",
+                card3Desc: "Integra volumen, micrófono y EQ para cambiar instantáneamente entre juegos, música y reuniones desde la bandeja del sistema.",
+                demoTitle: "🎛️ Simulación interactiva del panel de control",
+                demoSub: "¡Prueba a cambiar los modos preestablecidos o ajustar el volumen abajo!",
+                batteryText: "🔋 Batería: 90% (Conectado)",
+                presetLabel: "Modo preestablecido:",
+                mode1: "🎮 Modo Juego",
+                mode2: "🎵 Modo Música",
+                mode3: "🎬 Modo Película",
+                mode4: "🎙️ Modo Reunión",
+                volHeader: "Control de volumen y micrófono",
+                headphoneVol: "Volumen principal",
+                micVol: "Volumen del micrófono",
+                eqHeader: "Ecualizador de 6 bandas (pasos de 0.1 dB)",
+                featTitle: "🚀 Tecnología y aspectos destacados",
+                featSub: "Arquitectura Python moderna para estética y rendimiento.",
+                f1Title: "Ajuste fino de 0.1dB",
+                f1Desc: "Deslizadores verticales para 6 bandas de frecuencia de 60Hz a 15kHz.",
+                f2Title: "Control de micrófono independiente",
+                f2Desc: "Ajuste en tiempo real y silencio con un clic mediante Windows Core Audio API.",
+                f3Title: "Residente en bandeja del sistema",
+                f3Desc: "Minimiza al área de notificación; clic derecho para cambiar de modo rápidamente.",
+                f4Title: "Integración Equalizer APO",
+                f4Desc: "Modificación en tiempo real de `config.txt` para aplicar ganancias al controlador de audio.",
+                f5Title: "Guardado automático JSON",
+                f5Desc: "Guarda automáticamente perfiles de volumen y EQ para cada escenario.",
+                f6Title: "GUI oscura estilo Spotify",
+                f6Desc: "Diseño moderno con esquinas redondeadas en PyQt6, integrado con Windows 11.",
+                instTitle: "📌 Guía de instalación rápida",
+                instSub: "Inicia el controlador G321 en tu PC en cuatro sencillos pasos.",
+                step1Title: "Instalar el controlador Equalizer APO",
+                step1Desc: "Descarga e instala Equalizer APO. En la ventana Configurator, asegúrate de marcar tu dispositivo Logitech G321 y luego <b>reinicia tu ordenador</b>.",
+                step1Link: "Descargar Equalizer APO",
+                step2Title: "Instalar dependencias de Python",
+                step2Desc: "Abre el Símbolo del sistema (CMD) o PowerShell y ejecuta:",
+                step3Title: "Ejecutar programa principal",
+                step3Desc: "Después de descargar los archivos del proyecto, ejecuta:",
+                step4Title: "(Opcional) Empaquetar como .exe con PyInstaller",
+                step4Desc: "Para empaquetar en un ejecutable independiente sin ventana de comandos, ejecuta:",
+                footerCopy: "&copy; 2026 G321-Audio-Controller. Bajo licencia MIT.",
+                disclaimerBtn: "Aviso y exención de responsabilidad",
+                modalTitle: "Aviso y exención de responsabilidad (Disclaimer & Credits)",
+                modalP1Title: "Dependencia de software de terceros:",
+                modalP1Text: "Este proyecto (G321_Controller) es una herramienta de control auxiliar y requiere el software de audio de código abierto",
+                modalP1Text2: "para el ajuste del ecualizador. Este proyecto no está afiliado con Equalizer APO.",
+                modalP2Title: "Aviso de marcas registradas:",
+                modalP2Text: "'Logitech', 'LIGHTSPEED', 'G321' y 'Spotify' pertenecen a sus respectivos dueños. Este proyecto es una interfaz de control personal compatible.",
+                modalP3Title: "Exención de responsabilidad:",
+                modalP3Text: "Este software se proporciona 'tal cual', sin garantías. Los usuarios asumen todos los riesgos sobre problemas de hardware o software derivados del ajuste de audio.",
+                modalClose: "Entendido y cerrar"
+            },
+            'it': {
+                navSubtitle: "Audio Controller",
+                navMotivation: "Motivazione",
+                navDemo: "Demo Pannello",
+                navFeatures: "Funzionalità",
+                navInstallation: "Installazione",
+                badgeTitle: "Centro di controllo leggero per Logitech G321",
+                headerMain1: "Si prega di leggere il manuale e le recensioni prima dell'acquisto",
+                headerMain2: "Controller EQ ad alta precisione G321 0.1 dB",
+                headerDesc: "Combina Python PyQt6, Equalizer APO e Windows Core Audio.<br>Offre a giocatori e audiofili un cambio modalità leggero, preciso e fluido.<br>Equalizzatore professionale a 6 bande (passi da 0.1 dB), mixer smart e monitoraggio batteria.",
+                btnDemo: "Prova il pannello interattivo",
+                btnInstall: "Guida all'installazione",
+                motTitle: "🎯 Motivazione del progetto",
+                motSub: "Una soluzione ottimizzata per cuffie wireless Logitech G321 e simili.",
+                card1Title: "Software ufficiale pesante",
+                card1Desc: "I driver ufficiali consumano molta memoria e CPU, caricano lentamente e hanno troppe funzioni superflue.",
+                card2Title: "Granularità grossolana",
+                card2Desc: "Gli equalizzatori predefiniti offrono solo 1dB, non permettendo di regolare finemente passi (2.4kHz) o bassi (60Hz) a passi di 0.1dB.",
+                card3Title: "Cambio modalità in un clic",
+                card3Desc: "Integra volume, microfono ed EQ per passare istantaneamente tra modalità gioco, musica e riunione dalla barra delle applicazioni.",
+                demoTitle: "🎛️ Simulazione interattiva del pannello di controllo",
+                demoSub: "Prova a cambiare le modalità preimpostate o regolare il volume qui sotto!",
+                batteryText: "🔋 Batteria: 90% (Connesso)",
+                presetLabel: "Modalità preimpostata:",
+                mode1: "🎮 Modalità Gioco",
+                mode2: "🎵 Modalità Musica",
+                mode3: "🎬 Modalità Film",
+                mode4: "🎙️ Modalità Riunione",
+                volHeader: "Controllo volume e microfono",
+                headphoneVol: "Volume cuffie",
+                micVol: "Volume microfono",
+                eqHeader: "Equalizzatore a 6 bande (passi da 0.1 dB)",
+                featTitle: "🚀 Tecnologia e punti di forza",
+                featSub: "Architettura Python moderna per estetica e prestazioni eccellenti.",
+                f1Title: "Regolazione fine 0.1dB",
+                f1Desc: "Slider verticali per 6 bande di frequenza da 60Hz a 15kHz.",
+                f2Title: "Controllo microfono indipendente",
+                f2Desc: "Regolazione in tempo reale e mute con un clic tramite Windows Core Audio API.",
+                f3Title: "Residente nella barra delle applicazioni",
+                f3Desc: "Riducibile nel tray; tasto destro per cambiare modalità rapidamente.",
+                f4Title: "Integrazione Equalizer APO",
+                f4Desc: "Modifica in tempo reale di `config.txt` per applicare i guadagni al driver audio.",
+                f5Title: "Salvataggio automatico JSON",
+                f5Desc: "Salva automaticamente i profili di volume e EQ per ogni scenario.",
+                f6Title: "GUI scura stile Spotify",
+                f6Desc: "Design moderno con angoli arrotondati in PyQt6, integrato con Windows 11.",
+                instTitle: "📌 Guida all'installazione rapida",
+                instSub: "Avvia G321 Controller sul tuo PC in quattro semplici passaggi.",
+                step1Title: "Installa il driver Equalizer APO",
+                step1Desc: "Scarica e installa Equalizer APO. Nella finestra Configurator, seleziona il dispositivo Logitech G321 e <b>riavvia il computer</b>.",
+                step1Link: "Scarica Equalizer APO",
+                step2Title: "Installa dipendenze Python",
+                step2Desc: "Apri il Prompt dei comandi (CMD) o PowerShell ed esegui:",
+                step3Title: "Esegui il programma principale",
+                step3Desc: "Dopo aver scaricato i file del progetto, esegui:",
+                step4Title: "(Opzionale) Crea eseguibile .exe con PyInstaller",
+                step4Desc: "Per impacchettare in un eseguibile indipendente senza finestra di comando, esegui:",
+                footerCopy: "&copy; 2026 G321-Audio-Controller. Con licenza MIT.",
+                disclaimerBtn: "Note legali e limitazione di responsabilità",
+                modalTitle: "Note legali e limitazione di responsabilità (Disclaimer & Credits)",
+                modalP1Title: "Dipendenza software di terze parti:",
+                modalP1Text: "Questo progetto (G321_Controller) è uno strumento di controllo ausiliario e richiede il software audio open-source",
+                modalP1Text2: "per la regolazione dell'equalizzatore. Questo progetto non è affiliato con Equalizer APO.",
+                modalP2Title: "Avviso sui marchi:",
+                modalP2Text: "'Logitech', 'LIGHTSPEED', 'G321' e 'Spotify' appartengono ai rispettivi proprietari. Questo progetto è un'interfaccia di controllo personale compatibile.",
+                modalP3Title: "Limitazione di responsabilità:",
+                modalP3Text: "Questo software è fornito 'così com'è', senza garanzie. Gli utenti si assumono tutti i rischi relativi a problemi hardware o software derivanti dalla modifica dell'audio.",
+                modalClose: "Ho capito e chiudi"
+            }
+        };
+
+        const langLabels = {
+            'zh-Hant': '繁體中文',
+            'en': 'English',
+            'ja': '日本語',
+            'ko': '한국어',
+            'fr': 'Français',
+            'es': 'Español',
+            'it': 'Italiano'
+        };
+
+        function toggleLangMenu() {
+            const dropdown = document.getElementById('langDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        function changeLanguage(lang) {
+            document.getElementById('currentLangLabel').textContent = langLabels[lang];
+            document.getElementById('langDropdown').classList.add('hidden');
+            document.documentElement.setAttribute('lang', lang);
+
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // 同步更新下拉選單中的文字（若有需要）
+        }
+
+        // 點擊其他地方關閉語言選單
+        window.addEventListener('click', function(e) {
+            const btn = e.target.closest('button');
+            if (!btn || !btn.getAttribute('onclick')?.includes('toggleLangMenu')) {
+                const dropdown = document.getElementById('langDropdown');
+                if (dropdown && !dropdown.contains(e.target)) {
+                    dropdown.classList.add('hidden');
+                }
+            }
+        });
+
         // Modal Control Functions
         function openModal() {
             const modal = document.getElementById('disclaimerModal');
@@ -444,21 +971,19 @@
             modal.classList.add('hidden');
         }
 
-        // Close Modal when clicking outside content box
         document.getElementById('disclaimerModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeModal();
             }
         });
 
-        // Close Modal on ESC key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeModal();
             }
         });
 
-        // Preset EQ profile values (values in dB float)
+        // Preset EQ profile values
         const PROFILES = {
             "遊戲模式": { vol: 60, mic: 80, eq: [3.0, 1.0, -1.5, 0.0, 4.0, 2.0] },
             "音樂模式": { vol: 70, mic: 60, eq: [3.5, 2.0, 0.0, 0.0, 1.5, 2.5] },
@@ -468,14 +993,12 @@
 
         let currentProfile = "遊戲模式";
 
-        // UI Element References
         const modeSelect = document.getElementById('modeSelect');
         const volSlider = document.getElementById('volSlider');
         const micSlider = document.getElementById('micSlider');
         const volVal = document.getElementById('volVal');
         const micVal = document.getElementById('micVal');
 
-        // Update UI Text & EQ displays
         function updateUI(profileName) {
             const data = PROFILES[profileName];
             if (!data) return;
@@ -495,7 +1018,6 @@
             });
         }
 
-        // Event Listeners
         modeSelect.addEventListener('change', (e) => {
             currentProfile = e.target.value;
             updateUI(currentProfile);
@@ -509,7 +1031,6 @@
             micVal.textContent = e.target.value + "%";
         });
 
-        // Add input listeners for all 6 EQ sliders (0.1 dB Precision)
         for (let i = 0; i < 6; i++) {
             const slider = document.getElementById(`eqSlider${i}`);
             const label = document.getElementById(`eqVal${i}`);
@@ -521,7 +1042,6 @@
             }
         }
 
-        // Initialize UI
         updateUI(currentProfile);
     </script>
 </body>
