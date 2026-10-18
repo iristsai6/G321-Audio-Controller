@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G321 Wireless Headset Master Controller - 專案展示與指南</title>
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        spotify: {
+                            green: '#1DB954',
+                            lightgreen: '#1ED760',
+                            dark: '#121212',
+                            base: '#181818',
+                            card: '#282828',
+                            hover: '#3E3E3E',
+                            muted: '#B3B3B3'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI', 'system-ui', '-apple-system', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar and glassmorphism styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #282828;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1DB954;
+        }
+        .glass-panel {
+            background: rgba(24, 24, 24, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px rgba(29, 185, 84, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-spotify-dark text-white font-sans antialiased selection:bg-spotify-green selection:text-black min-h-screen flex flex-col">
+
+    <nav class="sticky top-0 z-50 glass-panel border-b border-white/10 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-spotify-green flex items-center justify-center text-black font-black text-xl shadow-lg shadow-spotify-green/30">
+                    <i class="fa-solid fa-headphones"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-lg tracking-wide block leading-none">G321 Master</span>
+                    <span class="text-xs text-spotify-muted">Audio Controller</span>
+                </div>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold">
+                <a href="#motivation" class="text-spotify-muted hover:text-spotify-green transition-colors">專案動機</a>
+                <a href="#demo" class="text-spotify-muted hover:text-spotify-green transition-colors">控制面板模擬</a>
+                <a href="#features" class="text-spotify-muted hover:text-spotify-green transition-colors">核心功能</a>
+                <a href="#installation" class="text-spotify-muted hover:text-spotify-green transition-colors">安裝與使用步驟</a>
+            </div>
+            <div>
+                <a href="https://github.com" target="_blank" class="bg-spotify-card hover:bg-spotify-hover text-white text-xs font-bold py-2.5 px-4 rounded-full border border-white/10 transition flex items-center gap-2">
+                    <i class="fa-brands fa-github text-base"></i> GitHub 專案
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative py-20 px-6 text-center overflow-hidden border-b border-white/5">
+        <div class="absolute inset-0 bg-gradient-to-b from-spotify-green/10 via-transparent to-transparent pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <span class="inline-block bg-spotify-green/10 text-spotify-green text-xs font-bold px-3 py-1 rounded-full border border-spotify-green/20 mb-4 uppercase tracking-wider">
+                Logitech G321 專屬輕量化控制中心
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-6 leading-tight">
+                購買前請詳閱說明書和網路評價 <br/>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-spotify-green via-spotify-lightgreen to-white">
+                    0.1 dB 高精度 6 頻段等化器
+                </span>
+            </h1>
+            <p class="text-spotify-muted text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+                擺脫笨重的官方驅動，結合 Python PyQt6、Equalizer APO 底層驅動與 Windows Core Audio，為玩家與音響愛好者提供極致輕量、精準且流暢的情境切換體驗。
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#demo" class="bg-spotify-green hover:bg-spotify-lightgreen text-black font-bold py-3 px-8 rounded-full shadow-lg shadow-spotify-green/30 transition transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-sliders mr-2"></i> 體驗互動控制面板
+                </a>
+                <a href="#installation" class="bg-spotify-card hover:bg-spotify-hover text-white font-bold py-3 px-8 rounded-full border border-white/10 transition">
+                    <i class="fa-solid fa-download mr-2"></i> 查看安裝指南
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-6 py-12 w-full space-y-24">
+
+        <section id="motivation" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">🎯 開發動機 (Motivation)</h2>
+                <p class="text-spotify-muted max-w-2xl mx-auto">針對 Logitech G321 及同類型無線耳機的使用痛點量身打造的最佳化解決方案。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-panel p-8 rounded-2xl border border-white/5 hover:border-spotify-green/30 transition group">
+                    <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-weight-hanging"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">官方軟體笨重</h3>
+                    <p class="text-spotify-muted text-sm leading-relaxed">
+                        傳統官方驅動程式往往佔用大量系統記憶體與背景 CPU 資源，開機載入緩慢且功能過度繁雜。
+                    </p>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl border border-white/5 hover:border-spotify-green/30 transition group">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">調音顆粒過粗</h3>
+                    <p class="text-spotify-muted text-sm leading-relaxed">
+                        一般預設等化器僅提供 1dB 或更粗糙的增益選項，無法針對遊戲腳步聲 (2.4kHz) 或重低音 (60Hz) 進行 0.1dB 級距的細緻等化。
+                    </p>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl border border-white/5 hover:border-spotify-green/30 transition group">
+                    <div class="w-12 h-12 rounded-xl bg-spotify-green/10 text-spotify-green flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">一鍵情境切換</h3>
+                    <p class="text-spotify-muted text-sm leading-relaxed">
+                        整合主音量、麥克風增益與 6 頻段 EQ 設定，只需透過系統列選單即可瞬間在遊戲、音樂、語音開會模式間轉換。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="scroll-mt-24">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-3">🎛️ 互動式控制面板模擬</h2>
+                <p class="text-spotify-muted max-w-2xl mx-auto">下方為控制面板與 EQ 數值模擬，試著切換預設模式或調整主音量與麥克風！</p>
+            </div>
+
+            <div class="glass-panel rounded-3xl p-6 sm:p-8 glow-effect max-w-4xl mx-auto border border-white/10">
+                <!-- App Header Simulation -->
+                <div class="flex flex-wrap items-center justify-between gap-4 pb-6 mb-6 border-b border-white/10">
+                    <div class="flex items-center gap-3">
+                        <div class="w-3 h-3 rounded-full bg-spotify-green animate-pulse"></div>
+                        <span id="batteryStatus" class="font-bold text-sm text-spotify-green">🔋 模擬電量: 90% (已連線)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <label class="text-xs text-spotify-muted font-bold">預設模式：</label>
+                        <select id="modeSelect" class="bg-spotify-card border border-white/10 text-white text-xs rounded-lg px-3 py-1.5 focus:outline-none focus:border-spotify-green">
+                            <option value="遊戲模式">🎮 遊戲模式 (Gaming)</option>
+                            <option value="音樂模式">🎵 音樂模式 (Music)</option>
+                            <option value="追劇模式">🎬 追劇模式 (Movie)</option>
+                            <option value="語音會議">🎙️ 語音會議 (Meeting)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Sliders Section -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Volume Controls -->
+                    <div class="space-y-4">
+                        <h4 class="text-xs font-bold text-spotify-muted uppercase tracking-wider">音量與麥克風調節</h4>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span>耳機主音量</span>
+                                <span id="volVal" class="text-spotify-green font-bold">60%</span>
+                            </div>
+                            <input type="range" id="volSlider" min="0" max="100" value="60" class="w-full accent-spotify-green bg-spotify-card rounded-lg h-1.5 cursor-pointer">
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span>麥克風輸入音量</span>
+                                <span id="micVal" class="text-spotify-green font-bold">80%</span>
+                            </div>
+                            <input type="range" id="micSlider" min="0" max="100" value="80" class="w-full accent-spotify-green bg-spotify-card rounded-lg h-1.5 cursor-pointer">
+                        </div>
+                    </div>
+
+                    <!-- EQ Values Interactive Vertical Sliders (0.1 dB Step) -->
+                    <div>
+                        <h4 class="text-xs font-bold text-spotify-muted uppercase tracking-wider mb-4">6 頻段等化器微調 (0.1 dB 級距)</h4>
+                        <div class="grid grid-cols-6 gap-2 bg-spotify-base p-4 rounded-2xl border border-white/5">
+                            <!-- 60Hz -->
+                            <div class="flex flex-col items-center gap-2">
+                                <span id="eqVal0" class="text-[11px] font-bold text-spotify-green">+3.0 dB</span>
+                                <div class="h-32 flex items-center justify-center">
+                                    <input type="range" id="eqSlider0" min="-120" max="120" value="30" step="1" 
+                                           class="accent-spotify-green h-28 cursor-pointer [writing-mode:vertical-lr] [direction:rtl]">
+                                </div>
+                                <span class="text-[10px] text-spotify-muted font-bold">60Hz</span>
+                            </div>
+
+                            <!-- 150Hz -->
+                            <div class="flex flex-col items-center gap-2">
+                                <span id="eqVal1" class="text-[11px] font-bold text-spotify-green">+1.0 dB</span>
+                                <div class="h-32 flex items-center justify-center">
+                                    <input type="range" id="eqSlider1" min="-120" max="120" value="10" step="1" 
+                                           class="accent-spotify-green h-28 cursor-pointer [writing-mode:vertical-lr] [direction:rtl]">
+                                </div>
+                                <span class="text-[10px] text-spotify-muted font-bold">150Hz</span>
+                            </div>
+
+                            <!-- 400Hz -->
+                            <div class="flex flex-col items-center gap-2">
+                                <span id="eqVal2" class="text-[11px] font-bold text-spotify-green">-1.5 dB</span>
+                                <div class="h-32 flex items-center justify-center">
+                                    <input type="range" id="eqSlider2" min="-120" max="120" value="-15" step="1" 
+                                           class="accent-spotify-green h-28 cursor-pointer [writing-mode:vertical-lr] [direction:rtl]">
+                                </div>
+                                <span class="text-[10px] text-spotify-muted font-bold">400Hz</span>
+                            </div>
+
+                            <!-- 1kHz -->
+                            <div class="flex flex-col items-center gap-2">
+                                <span id="eqVal3" class="text-[11px] font-bold text-spotify-green">0.0 dB</span>
+                                <div class="h-32 flex items-center justify-center">
+                                    <input type="range" id="eqSlider3" min="-120" max="120" value="0" step="1" 
+                                           class="accent-spotify-green h-28 cursor-pointer [writing-mode:vertical-lr] [direction:rtl]">
+                                </div>
+                                <span class="text-[10px] text-spotify-muted font-bold">1kHz</span>
+                            </div>
+
+                            <!-- 2.4kHz -->
+                            <div class="flex flex-col items-center gap-2">
+                                <span id="eqVal4" class="text-[11px] font-bold text-spotify-green">+4.0 dB</span>
+                                <div class="h-32 flex items-center justify-center">
+                                    <input type="range" id="eqSlider4" min="-120" max="120" value="40" step="1" 
+                                           class="accent-spotify-green h-28 cursor-pointer [writing-mode:vertical-lr] [direction:rtl]">
+                                </div>
+                                <span class="text-[10px] text-spotify-muted font-bold">2.4kHz</span>
+                            </div>
+
+                            <!-- 15kHz -->
+                            <div class="flex flex-col items-center gap-2">
+                                <span id="eqVal5" class="text-[11px] font-bold text-spotify-green">+2.0 dB</span>
+                                <div class="h-32 flex items-center justify-center">
+                                    <input type="range" id="eqSlider5" min="-120" max="120" value="20" step="1" 
+                                           class="accent-spotify-green h-28 cursor-pointer [writing-mode:vertical-lr] [direction:rtl]">
+                                </div>
+                                <span class="text-[10px] text-spotify-muted font-bold">15kHz</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">🚀 核心技術與功能亮點</h2>
+                <p class="text-spotify-muted max-w-2xl mx-auto">採用現代化 Python 架構，兼顧介面質感與效能表現。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-spotify-card p-6 rounded-2xl border border-white/5 flex gap-4 items-start">
+                    <div class="p-3 bg-spotify-green/10 text-spotify-green rounded-xl text-xl shrink-0"><i class="fa-solid fa-sliders"></i></div>
+                    <div>
+                        <h3 class="font-bold text-base mb-1">0.1dB 精細微調</h3>
+                        <p class="text-spotify-muted text-xs leading-relaxed">直列式 Vertical Sliders，支援 60Hz 到 15kHz 共 6 個核心頻段微調。</p>
+                    </div>
+                </div>
+                <div class="bg-spotify-card p-6 rounded-2xl border border-white/5 flex gap-4 items-start">
+                    <div class="p-3 bg-spotify-green/10 text-spotify-green rounded-xl text-xl shrink-0"><i class="fa-solid fa-microphone"></i></div>
+                    <div>
+                        <h3 class="font-bold text-base mb-1">麥克風獨立控制</h3>
+                        <p class="text-spotify-muted text-xs leading-relaxed">透過 Windows Core Audio API 即時調整錄音聲道音量與一鍵靜音切換。</p>
+                    </div>
+                </div>
+                <div class="bg-spotify-card p-6 rounded-2xl border border-white/5 flex gap-4 items-start">
+                    <div class="p-3 bg-spotify-green/10 text-spotify-green rounded-xl text-xl shrink-0"><i class="fa-solid fa-window-minimize"></i></div>
+                    <div>
+                        <h3 class="font-bold text-base mb-1">系統列常駐 (Pystray)</h3>
+                        <p class="text-spotify-muted text-xs leading-relaxed">視窗可直接縮小至右下角工作列，右鍵一鍵切換預設模式不佔桌面。</p>
+                    </div>
+                </div>
+                <div class="bg-spotify-card p-6 rounded-2xl border border-white/5 flex gap-4 items-start">
+                    <div class="p-3 bg-spotify-green/10 text-spotify-green rounded-xl text-xl shrink-0"><i class="fa-solid fa-file-code"></i></div>
+                    <div>
+                        <h3 class="font-bold text-base mb-1">Equalizer APO 寫入</h3>
+                        <p class="text-spotify-muted text-xs leading-relaxed">實時修改 `config.txt`，直接將增益參數套用到作業系統底層驅動。</p>
+                    </div>
+                </div>
+                <div class="bg-spotify-card p-6 rounded-2xl border border-white/5 flex gap-4 items-start">
+                    <div class="p-3 bg-spotify-green/10 text-spotify-green rounded-xl text-xl shrink-0"><i class="fa-solid fa-floppy-disk"></i></div>
+                    <div>
+                        <h3 class="font-bold text-base mb-1">JSON 自動記憶</h3>
+                        <p class="text-spotify-muted text-xs leading-relaxed">自動儲存使用者於不同情境下的音量與 EQ 參數，開機自動讀取。</p>
+                    </div>
+                </div>
+                <div class="bg-spotify-card p-6 rounded-2xl border border-white/5 flex gap-4 items-start">
+                    <div class="p-3 bg-spotify-green/10 text-spotify-green rounded-xl text-xl shrink-0"><i class="fa-solid fa-palette"></i></div>
+                    <div>
+                        <h3 class="font-bold text-base mb-1">Spotify 暗色系 GUI</h3>
+                        <p class="text-spotify-muted text-xs leading-relaxed">基於 PyQt6 刻劃的現代質感圓角與極簡風格，完美融合 Windows 11。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="installation" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">📌 快速安裝與建置指南</h2>
+                <p class="text-spotify-muted max-w-2xl mx-auto">只需簡單四個步驟，即可在您的電腦上啟動 G321 Master Controller。</p>
+            </div>
+
+            <div class="space-y-6 max-w-4xl mx-auto">
+                <!-- Step 1 -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/5 flex gap-6 items-start">
+                    <div class="w-10 h-10 rounded-full bg-spotify-green/20 text-spotify-green font-black flex items-center justify-center shrink-0">1</div>
+                    <div class="flex-grow">
+                        <h3 class="font-bold text-lg mb-2">安裝 Equalizer APO 底層驅動</h3>
+                        <p class="text-spotify-muted text-sm mb-3">請先下載並安裝 Equalizer APO。在安裝過程中的 Configurator 視窗，請務必勾選你的 Logitech G321 播放裝置，完成後<b>重新啟動電腦</b>。</p>
+                        <a href="https://sourceforge.net/projects/equalizerapo/" target="_blank" class="text-xs text-spotify-green hover:underline font-bold inline-flex items-center gap-1">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> 下載 Equalizer APO
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/5 flex gap-6 items-start">
+                    <div class="w-10 h-10 rounded-full bg-spotify-green/20 text-spotify-green font-black flex items-center justify-center shrink-0">2</div>
+                    <div class="flex-grow">
+                        <h3 class="font-bold text-lg mb-2">安裝 Python 依賴套件</h3>
+                        <p class="text-spotify-muted text-sm mb-3">開啟命令提示字元 (CMD) 或 PowerShell，執行以下指令安裝必要套件：</p>
+                        <div class="bg-black/60 rounded-xl p-4 font-mono text-xs text-spotify-lightgreen border border-white/5 overflow-x-auto">
+                            pip install PyQt6 pycaw pystray Pillow comtypes
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/5 flex gap-6 items-start">
+                    <div class="w-10 h-10 rounded-full bg-spotify-green/20 text-spotify-green font-black flex items-center justify-center shrink-0">3</div>
+                    <div class="flex-grow">
+                        <h3 class="font-bold text-lg mb-2">執行主程式</h3>
+                        <p class="text-spotify-muted text-sm mb-3">將專案檔案下載至本地資料夾後，直接執行主程式：</p>
+                        <div class="bg-black/60 rounded-xl p-4 font-mono text-xs text-spotify-lightgreen border border-white/5 overflow-x-auto">
+                            python g321_controller.py
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="glass-panel p-6 rounded-2xl border border-white/5 flex gap-6 items-start">
+                    <div class="w-10 h-10 rounded-full bg-spotify-green/20 text-spotify-green font-black flex items-center justify-center shrink-0">4</div>
+                    <div class="flex-grow">
+                        <h3 class="font-bold text-lg mb-2">(可選) 使用 PyInstaller 打包為 .exe 執行檔</h3>
+                        <p class="text-spotify-muted text-sm mb-3">若希望打包為無命令視窗的獨立執行檔，請執行以下指令：</p>
+                        <div class="bg-black/60 rounded-xl p-4 font-mono text-xs text-spotify-lightgreen border border-white/5 overflow-x-auto">
+                            pyinstaller --noconsole --onefile --icon=g321icon.ico g321_controller.py
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-white/5 py-8 text-center text-xs text-spotify-muted bg-black/40">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                &copy; 2026 G321 Master Controller. MIT Licensed.
+            </div>
+            <div class="flex space-x-6">
+                <a href="#motivation" class="hover:text-white transition">專案動機</a>
+                <a href="#demo" class="hover:text-white transition">控制面板</a>
+                <a href="#installation" class="hover:text-white transition">安裝步驟</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Preset EQ profile values (values in dB float)
+        const PROFILES = {
+            "遊戲模式": { vol: 60, mic: 80, eq: [3.0, 1.0, -1.5, 0.0, 4.0, 2.0] },
+            "音樂模式": { vol: 70, mic: 60, eq: [3.5, 2.0, 0.0, 0.0, 1.5, 2.5] },
+            "追劇模式": { vol: 75, mic: 60, eq: [3.0, 1.5, -1.0, 0.5, 2.5, 2.0] },
+            "語音會議": { vol: 60, mic: 85, eq: [-2.0, -1.5, 0.0, 1.0, 3.5, -1.0] }
+        };
+
+        let currentProfile = "遊戲模式";
+
+        // UI Element References
+        const modeSelect = document.getElementById('modeSelect');
+        const volSlider = document.getElementById('volSlider');
+        const micSlider = document.getElementById('micSlider');
+        const volVal = document.getElementById('volVal');
+        const micVal = document.getElementById('micVal');
+
+        // Update UI Text & EQ displays
+        function updateUI(profileName) {
+            const data = PROFILES[profileName];
+            if (!data) return;
+
+            volSlider.value = data.vol;
+            micSlider.value = data.mic;
+            volVal.textContent = data.vol + "%";
+            micVal.textContent = data.mic + "%";
+
+            data.eq.forEach((val, idx) => {
+                const slider = document.getElementById(`eqSlider${idx}`);
+                const label = document.getElementById(`eqVal${idx}`);
+                if (slider && label) {
+                    slider.value = Math.round(val * 10);
+                    label.textContent = (val >= 0 ? '+' : '') + val.toFixed(1) + ' dB';
+                }
+            });
+        }
+
+        // Event Listeners
+        modeSelect.addEventListener('change', (e) => {
+            currentProfile = e.target.value;
+            updateUI(currentProfile);
+        });
+
+        volSlider.addEventListener('input', (e) => {
+            volVal.textContent = e.target.value + "%";
+        });
+
+        micSlider.addEventListener('input', (e) => {
+            micVal.textContent = e.target.value + "%";
+        });
+
+        // Add input listeners for all 6 EQ sliders (0.1 dB Precision)
+        for (let i = 0; i < 6; i++) {
+            const slider = document.getElementById(`eqSlider${i}`);
+            const label = document.getElementById(`eqVal${i}`);
+            if (slider && label) {
+                slider.addEventListener('input', (e) => {
+                    const dbVal = parseFloat(e.target.value) / 10.0;
+                    label.textContent = (dbVal >= 0 ? '+' : '') + dbVal.toFixed(1) + ' dB';
+                });
+            }
+        }
+
+        // Initialize UI
+        updateUI(currentProfile);
+    </script>
+</body>
+</html>
