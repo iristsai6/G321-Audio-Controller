@@ -110,13 +110,13 @@ pyinstaller --noconsole --onefile --icon=g321icon.ico g321_controller.py
 >因G321無法收集電量資訊，選擇採用模擬掉電的模式，以60秒為單位模擬掉電狀態，若需調整掉電速度可至程式碼中找到`time.sleep(60)`調整秒數
 
 ![alt text](img/image-10.png)
-![alt text](img/image-11.png)
+<br>![alt text](img/image-11.png)
 
 ### 儲存後的設定會以json的形式存在 g321_config.json
 >...\dist\g321_config.json
 >
 ![alt text](img/image-12.png)
-![alt text](img/image-13.png)
+<br>![alt text](img/image-13.png)
 
 ---
 
